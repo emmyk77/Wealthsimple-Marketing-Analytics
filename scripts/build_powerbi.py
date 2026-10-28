@@ -57,7 +57,7 @@ m='''let
             flag_missing_date=day=null,flag_date_month_conflict=dateConflict,date_eligible=dated,flag_cost_mismatch=mismatch,flag_negative_component=negativeComponent,
             flag_missing_funnel=missing,flag_funnel_order=badOrder,funnel_eligible=funnel,cost_eligible=cost,analysis_eligible=eligible,revenue_eligible=rev,roas_eligible=rev and numeric[ad_spend_cad]<>null,
             flag_missing_name=name="Unknown",flag_missing_channel=channel="Unknown",flag_missing_segment=segment="Unknown",flag_negative_spend=let n=Num(r[ad_spend_cad]) in n<>null and n<0,
-            flag_missing_revenue=numeric[first_month_revenue_cad]=null,flag_campaign_id_conflict=List.Contains(ConflictIds,r[campaign_id])]])
+            flag_missing_revenue=numeric[first_month_revenue_cad]=null,flag_campaign_id_conflict=List.Contains(ConflictIds,r[campaign_id])]})
     in clean),
     Result = Table.FromRecords(Records),
     Typed = Table.TransformColumnTypes(Result,__TYPES__,"en-CA")

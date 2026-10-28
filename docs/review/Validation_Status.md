@@ -9,3 +9,9 @@
 - Final PBIX: **not created or certified**. Follow powerbi/START_HERE.md and docs/Brief_Compliance.md.
 
 The rendered document and presentation checks establish their readability in the available rendering tools; they do not validate the Power BI report. The schema and reference checks establish source structure only.
+
+## Syntax correction after Desktop import feedback
+
+The Fact_Campaigns M expression contained a mismatched closing delimiter in Record.Combine. Microsoft Power Query parser 4.0.1 reproduced the failure before the fix. The generator, standalone query and model partition are now corrected. All six embedded M expressions and all three standalone .m files pass lexical and syntax parsing. The 105 visual binding, bounds and relationship checks also pass. Desktop refresh and DAX execution remain pending; syntax validation is not runtime validation.
+
+Run `npm install --no-save @microsoft/powerquery-parser@4.0.1`, then `node scripts/check_powerquery.cjs` from the repository root to repeat the syntax check.
