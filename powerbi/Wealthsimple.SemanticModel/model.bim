@@ -105,13 +105,13 @@
             "summarizeBy": "none"
           },
           {
-            "name": "impressions",
+            "name": "raw_impressions",
             "dataType": "int64",
             "sourceColumn": "impressions",
             "summarizeBy": "none"
           },
           {
-            "name": "clicks",
+            "name": "raw_clicks",
             "dataType": "int64",
             "sourceColumn": "clicks",
             "summarizeBy": "none"
@@ -129,7 +129,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "signups",
+            "name": "raw_signups",
             "dataType": "int64",
             "sourceColumn": "signups",
             "summarizeBy": "none"
@@ -402,19 +402,19 @@
           },
           {
             "name": "Impressions",
-            "expression": "CALCULATE(SUM(Fact_Campaigns[impressions]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[raw_impressions]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
             "formatString": "#,0",
             "displayFolder": "Overview"
           },
           {
             "name": "Clicks",
-            "expression": "CALCULATE(SUM(Fact_Campaigns[clicks]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[raw_clicks]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
             "formatString": "#,0",
             "displayFolder": "Overview"
           },
           {
             "name": "Signups",
-            "expression": "CALCULATE(SUM(Fact_Campaigns[signups]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[raw_signups]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
             "formatString": "#,0",
             "displayFolder": "Overview"
           },

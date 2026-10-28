@@ -41,19 +41,19 @@ Ad Spend = CALCULATE(SUM(Fact_Campaigns[ad_spend_cad]), KEEPFILTERS(Fact_Campaig
 ## Impressions
 
 ```dax
-Impressions = CALCULATE(SUM(Fact_Campaigns[impressions]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+Impressions = CALCULATE(SUM(Fact_Campaigns[raw_impressions]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
 ```
 
 ## Clicks
 
 ```dax
-Clicks = CALCULATE(SUM(Fact_Campaigns[clicks]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+Clicks = CALCULATE(SUM(Fact_Campaigns[raw_clicks]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
 ```
 
 ## Signups
 
 ```dax
-Signups = CALCULATE(SUM(Fact_Campaigns[signups]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+Signups = CALCULATE(SUM(Fact_Campaigns[raw_signups]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
 ```
 
 ## KYC Started

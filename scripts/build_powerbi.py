@@ -105,11 +105,19 @@ measure('Quality Issue Records','SWITCH(SELECTEDVALUE(Quality_Issues[Issue]),"Mi
 measure('Selected Channel Benchmark CAC','CALCULATE([CAC],ALLSELECTED(Fact_Campaigns[marketing_channel]))','"CAD "#,0.00','Efficiency')
 measure('Above Benchmark Channel Count','VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))','#,0','Efficiency')
 measure('Observed Efficiency Ratio','DIVIDE([Selected Channel Benchmark CAC],[CAC])','0.00"x"','Efficiency')
+# Tabular column and measure names share a case-insensitive namespace.
+raw_column_names = {'impressions':'raw_impressions','clicks':'raw_clicks','signups':'raw_signups'}
+for item in measures:
+ for original, renamed in raw_column_names.items():
+  item['expression'] = item['expression'].replace('Fact_Campaigns['+original+']', 'Fact_Campaigns['+renamed+']')
 write(Path('DAX_Measures.md'),'# Measure catalogue\n\nGenerated with the source model. Use aggregate ratios, never average row CAC. BLANK means undefined, not zero. CPC uses total marketing cost; Ad Spend is separately available. Efficiency ratio = selected-channel blended CAC / channel CAC; it is a descriptive relative measure, not a commercial target.\n\n'+''.join('## '+x['name']+'\n\n```dax\n'+x['name']+' = '+x['expression']+'\n```\n\n' for x in measures))
 # TMSL model, native M partitions.
 def table(n,cols,expr,**extra):return dict(name=n,columns=cols,partitions=[dict(name=n,mode='import',source=dict(type='m',expression=expr))],**extra)
 def col(n,t,**extra):return dict(name=n,dataType=t,sourceColumn=n,summarizeBy='none',**extra)
 fcols=[col(n,'string') for n in alltext]+[col(n,'int64') for n in counts]+[col(n,'double') for n in allmoney]+[col(n,'boolean',isHidden=True) for n in flags]+[col(n,'dateTime',formatString='yyyy-MM-dd') for n in ['event_date','trend_date']]
+for c in fcols:
+ if c['name'] in raw_column_names:
+  c['name'] = raw_column_names[c['name']]  # sourceColumn keeps the Power Query field name.
 stages=['Impressions','Clicks','Signups','KYC started','KYC completed','Funded accounts','Paying customers']
 issues=['Missing dates','Date conflicts','Incomplete funnels','Funnel violations','Missing names','Missing channels','Missing segments','Negative spend','Missing revenue']
 stageM='#table(type table [Stage=text, Sort=Int64.Type],{'+','.join('{'+mq(n)+','+str(i)+'}' for i,n in enumerate(stages,1))+'})'
@@ -155,3 +163,4 @@ for pid,label,cards,charts in pages:
 dump(base/'pages/pages.json',{'$schema':schema('pagesMetadata','1.0.0'),'pageOrder':[p[0] for p in pages],'activePageName':pages[0][0]})
 write(Path('Wealthsimple.SemanticModel/DAXQueries/Reconcile.dax'),'EVALUATE\nROW("Records",[Source Records],"Eligible",[Eligible Records],"Cost",[Total Spend],"Paying",[Paying Customers],"CAC",[CAC],"Revenue",[First Month Revenue],"ROAS",[ROAS],"Zero output cost",[Zero Output Family Spend])\n')
 print('Generated',len(measures),'measures,',len(pages),'pages and 105 native visuals. Desktop validation pending.')
+
