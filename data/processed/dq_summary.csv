@@ -1,0 +1,18 @@
+rule,action,issues,records
+campaign_id_multiple_names,use composite id plus name,663,663
+category_standardized,mapped,1127,959
+category_standardized,mapped or Unknown,1866,1866
+cost_reconstructed,sum of all three valid components,72,72
+date_campaign_month_conflict,retain date; exclude from trusted trend,107,107
+flag_clicks_gt_impressions,retain and exclude from consistent funnel,39,39
+flag_funded_accounts_gt_kyc_completed,retain and exclude from consistent funnel,9,9
+flag_kyc_completed_gt_kyc_started,retain and exclude from consistent funnel,50,50
+flag_kyc_started_gt_signups,retain and exclude from consistent funnel,7,7
+flag_paying_customers_gt_funded_accounts,retain and exclude from consistent funnel,43,43
+high_value_review,retained; 3-IQR review only,35,18
+invalid_or_missing_date,exclude from dated trends,102,102
+missing_or_unmapped_category,Unknown retained,45,45
+missing_or_unparseable,retained as null,1731,1433
+negative_numeric,retained in raw; analytical value null,123,120
+outside_allowed_range,analytical value null,54,53
+text_standardized,standardized or Unknown,2454,1626
