@@ -1,0 +1,797 @@
+{
+  "name": "WealthsimpleMarketing",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-CA",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "DataRoot",
+        "kind": "m",
+        "expression": "\"C:/CHANGE_ME/Wealthsimple-Marketing-Analytics\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      },
+      {
+        "name": "Raw_Campaigns",
+        "kind": "m",
+        "expression": "let\n    Workbook = Excel.Workbook(File.Contents(DataRoot & \"/data/raw/Power_BI_project.xlsx\"), null, true),\n    Sheet = Workbook{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],\n    Headers = Table.PromoteHeaders(Sheet, [PromoteAllScalars=true])\nin Headers"
+      }
+    ],
+    "tables": [
+      {
+        "name": "Fact_Campaigns",
+        "columns": [
+          {
+            "name": "campaign_record_id",
+            "dataType": "string",
+            "sourceColumn": "campaign_record_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_id",
+            "dataType": "string",
+            "sourceColumn": "campaign_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_name",
+            "dataType": "string",
+            "sourceColumn": "campaign_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "marketing_channel",
+            "dataType": "string",
+            "sourceColumn": "marketing_channel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_segment",
+            "dataType": "string",
+            "sourceColumn": "customer_segment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "province",
+            "dataType": "string",
+            "sourceColumn": "province",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "device_type",
+            "dataType": "string",
+            "sourceColumn": "device_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_focus",
+            "dataType": "string",
+            "sourceColumn": "product_focus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_objective",
+            "dataType": "string",
+            "sourceColumn": "campaign_objective",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "crm_status",
+            "dataType": "string",
+            "sourceColumn": "crm_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "province_code",
+            "dataType": "string",
+            "sourceColumn": "province_code",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cost_basis",
+            "dataType": "string",
+            "sourceColumn": "cost_basis",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_key",
+            "dataType": "string",
+            "sourceColumn": "campaign_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_family",
+            "dataType": "string",
+            "sourceColumn": "campaign_family",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "impressions",
+            "dataType": "int64",
+            "sourceColumn": "impressions",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "clicks",
+            "dataType": "int64",
+            "sourceColumn": "clicks",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "website_sessions",
+            "dataType": "int64",
+            "sourceColumn": "website_sessions",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "app_installs",
+            "dataType": "int64",
+            "sourceColumn": "app_installs",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "signups",
+            "dataType": "int64",
+            "sourceColumn": "signups",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "kyc_started",
+            "dataType": "int64",
+            "sourceColumn": "kyc_started",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "kyc_completed",
+            "dataType": "int64",
+            "sourceColumn": "kyc_completed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "funded_accounts",
+            "dataType": "int64",
+            "sourceColumn": "funded_accounts",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "paying_customers",
+            "dataType": "int64",
+            "sourceColumn": "paying_customers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ad_spend_cad",
+            "dataType": "double",
+            "sourceColumn": "ad_spend_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "agency_fee_cad",
+            "dataType": "double",
+            "sourceColumn": "agency_fee_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "incentive_cost_cad",
+            "dataType": "double",
+            "sourceColumn": "incentive_cost_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "total_marketing_cost_cad",
+            "dataType": "double",
+            "sourceColumn": "total_marketing_cost_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "first_month_revenue_cad",
+            "dataType": "double",
+            "sourceColumn": "first_month_revenue_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "projected_ltv_cad",
+            "dataType": "double",
+            "sourceColumn": "projected_ltv_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "avg_first_deposit_cad",
+            "dataType": "double",
+            "sourceColumn": "avg_first_deposit_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "reported_cost_cad",
+            "dataType": "double",
+            "sourceColumn": "reported_cost_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "component_total_cad",
+            "dataType": "double",
+            "sourceColumn": "component_total_cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "flag_missing_date",
+            "dataType": "boolean",
+            "sourceColumn": "flag_missing_date",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_date_month_conflict",
+            "dataType": "boolean",
+            "sourceColumn": "flag_date_month_conflict",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "date_eligible",
+            "dataType": "boolean",
+            "sourceColumn": "date_eligible",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_cost_mismatch",
+            "dataType": "boolean",
+            "sourceColumn": "flag_cost_mismatch",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_negative_component",
+            "dataType": "boolean",
+            "sourceColumn": "flag_negative_component",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_missing_funnel",
+            "dataType": "boolean",
+            "sourceColumn": "flag_missing_funnel",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_funnel_order",
+            "dataType": "boolean",
+            "sourceColumn": "flag_funnel_order",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "funnel_eligible",
+            "dataType": "boolean",
+            "sourceColumn": "funnel_eligible",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "cost_eligible",
+            "dataType": "boolean",
+            "sourceColumn": "cost_eligible",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "analysis_eligible",
+            "dataType": "boolean",
+            "sourceColumn": "analysis_eligible",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "revenue_eligible",
+            "dataType": "boolean",
+            "sourceColumn": "revenue_eligible",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "roas_eligible",
+            "dataType": "boolean",
+            "sourceColumn": "roas_eligible",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_missing_name",
+            "dataType": "boolean",
+            "sourceColumn": "flag_missing_name",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_missing_channel",
+            "dataType": "boolean",
+            "sourceColumn": "flag_missing_channel",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_missing_segment",
+            "dataType": "boolean",
+            "sourceColumn": "flag_missing_segment",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_negative_spend",
+            "dataType": "boolean",
+            "sourceColumn": "flag_negative_spend",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_missing_revenue",
+            "dataType": "boolean",
+            "sourceColumn": "flag_missing_revenue",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "flag_campaign_id_conflict",
+            "dataType": "boolean",
+            "sourceColumn": "flag_campaign_id_conflict",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "event_date",
+            "dataType": "dateTime",
+            "sourceColumn": "event_date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-MM-dd"
+          },
+          {
+            "name": "trend_date",
+            "dataType": "dateTime",
+            "sourceColumn": "trend_date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-MM-dd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Campaigns",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Raw_Campaigns,\n    Maps = [#\"channel_map\" = [#\"paid search\" = \"Paid Search\", #\"google search\" = \"Paid Search\", #\"ppc\" = \"Paid Search\", #\"search paid\" = \"Paid Search\", #\"paid social\" = \"Paid Social\", #\"social paid\" = \"Paid Social\", #\"facebook ads\" = \"Paid Social\", #\"meta\" = \"Paid Social\", #\"linkedin ads\" = \"LinkedIn Ads\", #\"linkedin paid\" = \"LinkedIn Ads\", #\"linkedin\" = \"LinkedIn Ads\", #\"display ads\" = \"Display\", #\"banner ads\" = \"Display\", #\"display\" = \"Display\", #\"programmatic\" = \"Display\", #\"organic search\" = \"Organic Search\", #\"organic\" = \"Organic Search\", #\"seo\" = \"Organic Search\", #\"youtube\" = \"YouTube\", #\"youtube ads\" = \"YouTube\", #\"yt ads\" = \"YouTube\", #\"referral\" = \"Referral\", #\"refer a friend\" = \"Referral\", #\"referal\" = \"Referral\", #\"influencer\" = \"Influencer\", #\"creator\" = \"Influencer\", #\"influencer marketing\" = \"Influencer\", #\"email\" = \"Email\", #\"e mail\" = \"Email\", #\"crm email\" = \"Email\", #\"affiliate\" = \"Affiliate\", #\"affiliate marketing\" = \"Affiliate\", #\"partners\" = \"Affiliate\", #\"out of home\" = \"Out-of-Home\", #\"ooh\" = \"Out-of-Home\", #\"transit ads\" = \"Out-of-Home\"], #\"prov_map\" = [#\"on\" = \"ON\", #\"ont\" = \"ON\", #\"ontario\" = \"ON\", #\"bc\" = \"BC\", #\"b.c.\" = \"BC\", #\"british columbia\" = \"BC\", #\"ab\" = \"AB\", #\"alberta\" = \"AB\", #\"qc\" = \"QC\", #\"quebec\" = \"QC\", #\"québec\" = \"QC\", #\"mb\" = \"MB\", #\"manitoba\" = \"MB\", #\"sk\" = \"SK\", #\"saskatchewan\" = \"SK\", #\"ns\" = \"NS\", #\"nova scotia\" = \"NS\", #\"nb\" = \"NB\", #\"new brunswick\" = \"NB\", #\"nl\" = \"NL\", #\"newfoundland\" = \"NL\", #\"pe\" = \"PE\", #\"pei\" = \"PE\"], #\"prov_full\" = [#\"ON\" = \"Ontario\", #\"BC\" = \"British Columbia\", #\"AB\" = \"Alberta\", #\"QC\" = \"Quebec\", #\"MB\" = \"Manitoba\", #\"SK\" = \"Saskatchewan\", #\"NS\" = \"Nova Scotia\", #\"NB\" = \"New Brunswick\", #\"NL\" = \"Newfoundland & Labrador\", #\"PE\" = \"Prince Edward Island\"], #\"seg_map\" = [#\"high income professionals\" = \"High Income Professionals\", #\"hnw prospects\" = \"High Income Professionals\", #\"high income\" = \"High Income Professionals\", #\"affluent\" = \"High Income Professionals\", #\"crypto curious\" = \"Crypto Curious\", #\"newcomers\" = \"Newcomers\", #\"newcomer\" = \"Newcomers\", #\"new immigrants\" = \"Newcomers\", #\"young professionals\" = \"Young Professionals\", #\"young professional\" = \"Young Professionals\", #\"young pros\" = \"Young Professionals\", #\"yp\" = \"Young Professionals\", #\"parents\" = \"Parents\", #\"families\" = \"Parents\", #\"students\" = \"Students\", #\"student\" = \"Students\", #\"uni students\" = \"Students\", #\"small business owners\" = \"Small Business Owners\", #\"small business\" = \"Small Business Owners\", #\"business owners\" = \"Small Business Owners\", #\"smb owners\" = \"Small Business Owners\", #\"first time investors\" = \"First-time Investors\", #\"new investor\" = \"First-time Investors\", #\"beginner investors\" = \"First-time Investors\"], #\"device_map\" = [#\"desktop\" = \"Desktop\", #\"android\" = \"Android\", #\"ios\" = \"iOS\", #\"tablet\" = \"Tablet\", #\"mobile web\" = \"Mobile Web\", #\"mobile\" = \"Mobile Web\"]],\n    Norm = (v as any) as text => Text.Combine(List.Select(Text.SplitAny(Text.Lower(Text.Trim(if v = null then \"\" else Text.From(v))), \" _-#(tab)#(cr)#(lf)\"), each _ <> \"\"), \" \"),\n    Num = (v as any) as nullable number => let s = if v = null then \"\" else Text.Trim(Text.Replace(Text.Replace(Text.Replace(Text.Upper(Text.From(v)), \"CAD\", \"\"), \"$\", \"\"), \",\", \"\")), n = try Number.FromText(s,\"en-US\") otherwise null in n,\n    CleanNum = (v as any, integer as logical) as nullable number => let n=Num(v) in if n=null then null else if n<0 or (integer and Number.RoundDown(n)<>n) then null else n,\n    Map = (v as any, dict as record) as text => Record.FieldOrDefault(dict,Norm(v),\"Unknown\"),\n    ParseDate = (v as any) as nullable date => if v=null then null else if Value.Is(v,type date) or Value.Is(v,type datetime) then Date.From(v) else List.First(List.RemoveNulls(List.Transform({\"yyyy-MM-dd HH:mm:ss\",\"yyyy-MM-dd\",\"dd/MM/yyyy\",\"dd.MM.yyyy\",\"dd-MM-yyyy\"}, (fmt)=>try Date.FromText(Text.From(v),[Format=fmt,Culture=\"en-GB\"]) otherwise null)),null),\n    CountNames = {\"impressions\",\"clicks\",\"website_sessions\",\"app_installs\",\"signups\",\"kyc_started\",\"kyc_completed\",\"funded_accounts\",\"paying_customers\"},\n    MoneyNames = {\"ad_spend_cad\",\"agency_fee_cad\",\"incentive_cost_cad\",\"total_marketing_cost_cad\",\"first_month_revenue_cad\",\"projected_ltv_cad\",\"avg_first_deposit_cad\"},\n    Chain = {\"impressions\",\"clicks\",\"signups\",\"kyc_started\",\"kyc_completed\",\"funded_accounts\",\"paying_customers\"},\n    Identity = Table.Group(Source,{\"campaign_id\"},{{\"Names\", each List.Count(List.Distinct([campaign_name])),Int64.Type}}),\n    ConflictIds = Table.SelectRows(Identity,each [Names]>1)[campaign_id],\n    Records = List.Transform(Table.ToRecords(Source),(r)=>let\n        numeric=Record.FromList(List.Transform(CountNames,each CleanNum(Record.Field(r,_),true)) & List.Transform(MoneyNames,each CleanNum(Record.Field(r,_),false)),CountNames & MoneyNames),\n        channel=Map(r[marketing_channel],Maps[channel_map]), segment=Map(r[customer_segment],Maps[seg_map]),\n        provinceCode=Map(r[province],Maps[prov_map]), province=Record.FieldOrDefault(Maps[prov_full],provinceCode,\"Unknown\"),\n        day=ParseDate(r[event_date_raw]), id=if r[campaign_id]=null then \"Unknown\" else Text.Trim(Text.From(r[campaign_id])),\n        name=if r[campaign_name]=null or Text.Trim(Text.From(r[campaign_name]))=\"\" then \"Unknown\" else Text.Trim(Text.From(r[campaign_name])),\n        month=if Text.StartsWith(id,\"CMP-\") and Text.Length(id)>=11 then Text.Range(id,4,6) else null,\n        dateConflict=day<>null and month<>null and Date.ToText(day,\"yyyyMM\")<>month,\n        components={numeric[ad_spend_cad],numeric[agency_fee_cad],numeric[incentive_cost_cad]},\n        componentTotal=if List.NonNullCount(components)=3 then Number.Round(List.Sum(components),2) else null,\n        reported=numeric[total_marketing_cost_cad], total=if reported=null then componentTotal else reported,\n        mismatch=if reported=null or componentTotal=null then false else Number.Abs(reported-componentTotal)>0.021,\n        negativeComponent=List.AnyTrue(List.Transform({\"ad_spend_cad\",\"agency_fee_cad\",\"incentive_cost_cad\"}, each let n=Num(Record.Field(r,_)) in n<>null and n<0)),\n        seq=List.Transform(Chain,each Record.Field(numeric,_)), missing=List.NonNullCount(seq)<>List.Count(seq),\n        badOrder=List.AnyTrue(List.Transform({0..5}, each let a=seq{_},b=seq{_+1} in if a=null or b=null then false else b>a)),\n        funnel=not missing and not badOrder, cost=total<>null and not mismatch and not negativeComponent,\n        eligible=funnel and cost, dated=day<>null and not dateConflict,\n        rev=eligible and numeric[first_month_revenue_cad]<>null,\n        original=Record.SelectFields(r,{\"campaign_record_id\",\"campaign_id\",\"campaign_name\",\"marketing_channel\",\"customer_segment\",\"province\",\"device_type\",\"product_focus\",\"campaign_objective\",\"crm_status\"}),\n        clean=Record.Combine({original,numeric,[campaign_id=id,campaign_name=name,marketing_channel=channel,customer_segment=segment,province=province,province_code=provinceCode,device_type=Map(r[device_type],Maps[device_map]),\n            total_marketing_cost_cad=total,reported_cost_cad=reported,component_total_cad=componentTotal,cost_basis=if reported=null and componentTotal<>null then \"complete component sum\" else \"reported\",\n            event_date=day,trend_date=if dated then day else null,campaign_key=id & \" | \" & name,campaign_family=channel & \" | \" & name,\n            flag_missing_date=day=null,flag_date_month_conflict=dateConflict,date_eligible=dated,flag_cost_mismatch=mismatch,flag_negative_component=negativeComponent,\n            flag_missing_funnel=missing,flag_funnel_order=badOrder,funnel_eligible=funnel,cost_eligible=cost,analysis_eligible=eligible,revenue_eligible=rev,roas_eligible=rev and numeric[ad_spend_cad]<>null,\n            flag_missing_name=name=\"Unknown\",flag_missing_channel=channel=\"Unknown\",flag_missing_segment=segment=\"Unknown\",flag_negative_spend=let n=Num(r[ad_spend_cad]) in n<>null and n<0,\n            flag_missing_revenue=numeric[first_month_revenue_cad]=null,flag_campaign_id_conflict=List.Contains(ConflictIds,r[campaign_id])]])\n    in clean),\n    Result = Table.FromRecords(Records),\n    Typed = Table.TransformColumnTypes(Result,{{\"campaign_record_id\",type text},{\"campaign_id\",type text},{\"campaign_name\",type text},{\"marketing_channel\",type text},{\"customer_segment\",type text},{\"province\",type text},{\"device_type\",type text},{\"product_focus\",type text},{\"campaign_objective\",type text},{\"crm_status\",type text},{\"province_code\",type text},{\"cost_basis\",type text},{\"campaign_key\",type text},{\"campaign_family\",type text},{\"impressions\",Int64.Type},{\"clicks\",Int64.Type},{\"website_sessions\",Int64.Type},{\"app_installs\",Int64.Type},{\"signups\",Int64.Type},{\"kyc_started\",Int64.Type},{\"kyc_completed\",Int64.Type},{\"funded_accounts\",Int64.Type},{\"paying_customers\",Int64.Type},{\"ad_spend_cad\",type number},{\"agency_fee_cad\",type number},{\"incentive_cost_cad\",type number},{\"total_marketing_cost_cad\",type number},{\"first_month_revenue_cad\",type number},{\"projected_ltv_cad\",type number},{\"avg_first_deposit_cad\",type number},{\"reported_cost_cad\",type number},{\"component_total_cad\",type number},{\"flag_missing_date\",type logical},{\"flag_date_month_conflict\",type logical},{\"date_eligible\",type logical},{\"flag_cost_mismatch\",type logical},{\"flag_negative_component\",type logical},{\"flag_missing_funnel\",type logical},{\"flag_funnel_order\",type logical},{\"funnel_eligible\",type logical},{\"cost_eligible\",type logical},{\"analysis_eligible\",type logical},{\"revenue_eligible\",type logical},{\"roas_eligible\",type logical},{\"flag_missing_name\",type logical},{\"flag_missing_channel\",type logical},{\"flag_missing_segment\",type logical},{\"flag_negative_spend\",type logical},{\"flag_missing_revenue\",type logical},{\"flag_campaign_id_conflict\",type logical},{\"event_date\",type date},{\"trend_date\",type date}},\"en-CA\")\nin Typed"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Source Records",
+            "expression": "COUNTROWS(Fact_Campaigns)",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Eligible Records",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Excluded Records",
+            "expression": "[Source Records] - [Eligible Records]",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Eligible Share",
+            "expression": "DIVIDE([Eligible Records],[Source Records])",
+            "formatString": "0.0%",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Total Spend",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[total_marketing_cost_cad]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Ad Spend",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[ad_spend_cad]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Impressions",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[impressions]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Clicks",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[clicks]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Signups",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[signups]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "KYC Started",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[kyc_started]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "KYC Completed",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[kyc_completed]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Funded Accounts",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[funded_accounts]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Paying Customers",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[paying_customers]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "CAC",
+            "expression": "DIVIDE([Total Spend],[Paying Customers])",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "CPC",
+            "expression": "DIVIDE([Total Spend],[Clicks])",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "CPS",
+            "expression": "DIVIDE([Total Spend],[Signups])",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "CTR",
+            "expression": "DIVIDE([Clicks],[Impressions])",
+            "formatString": "0.00%",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "Click to Signup",
+            "expression": "DIVIDE([Signups],[Clicks])",
+            "formatString": "0.00%",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "Signup to Funded",
+            "expression": "DIVIDE([Funded Accounts],[Signups])",
+            "formatString": "0.00%",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "Funded to Paying",
+            "expression": "DIVIDE([Paying Customers],[Funded Accounts])",
+            "formatString": "0.00%",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "Signup to Paying",
+            "expression": "DIVIDE([Paying Customers],[Signups])",
+            "formatString": "0.00%",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "KYC Completion",
+            "expression": "DIVIDE([KYC Completed],[KYC Started])",
+            "formatString": "0.00%",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "First Month Revenue",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[first_month_revenue_cad]), KEEPFILTERS(Fact_Campaigns[revenue_eligible] = TRUE()))",
+            "formatString": "#,0.00",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Matched Cost",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[total_marketing_cost_cad]), KEEPFILTERS(Fact_Campaigns[revenue_eligible] = TRUE()))",
+            "formatString": "#,0.00",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Matched Paying Customers",
+            "expression": "CALCULATE(SUM(Fact_Campaigns[paying_customers]), KEEPFILTERS(Fact_Campaigns[revenue_eligible] = TRUE()))",
+            "formatString": "#,0.00",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "ROAS",
+            "expression": "DIVIDE(CALCULATE(SUM(Fact_Campaigns[first_month_revenue_cad]),KEEPFILTERS(Fact_Campaigns[roas_eligible] = TRUE())),CALCULATE(SUM(Fact_Campaigns[ad_spend_cad]),KEEPFILTERS(Fact_Campaigns[roas_eligible] = TRUE())))",
+            "formatString": "0.0000\"x\"",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Revenue to Marketing Cost",
+            "expression": "DIVIDE([First Month Revenue],[Matched Cost])",
+            "formatString": "0.0000\"x\"",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Revenue Cost Gap",
+            "expression": "[First Month Revenue] - [Matched Cost]",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Revenue per Paying Customer",
+            "expression": "DIVIDE([First Month Revenue],[Matched Paying Customers])",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Revenue Records",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[revenue_eligible]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Revenue"
+          },
+          {
+            "name": "Missing Dates",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_date]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Date Conflicts",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_date_month_conflict]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Incomplete Funnels",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_funnel]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Funnel Violations",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_funnel_order]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Missing Names",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_name]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Missing Channels",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_channel]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Missing Segments",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_segment]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Negative Spend Records",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_negative_spend]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Missing Revenue",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_revenue]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Identity Conflict Records",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_campaign_id_conflict]=TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Known Cost All Rows",
+            "expression": "SUM(Fact_Campaigns[total_marketing_cost_cad])",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Excluded Known Cost",
+            "expression": "[Known Cost All Rows]-[Total Spend]",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Reconstructed Costs",
+            "expression": "CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[cost_basis]=\"complete component sum\"))",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Trusted Monthly Spend",
+            "expression": "CALCULATE([Total Spend],KEEPFILTERS(Fact_Campaigns[date_eligible]=TRUE()))",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Time"
+          },
+          {
+            "name": "Trusted Monthly Revenue",
+            "expression": "CALCULATE([First Month Revenue],KEEPFILTERS(Fact_Campaigns[date_eligible]=TRUE()))",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Time"
+          },
+          {
+            "name": "Undated or Conflicted Spend",
+            "expression": "[Total Spend]-[Trusted Monthly Spend]",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Time"
+          },
+          {
+            "name": "Zero Output Family Spend",
+            "expression": "SUMX(FILTER(VALUES(Fact_Campaigns[campaign_family]),[Eligible Records]>0 && NOT ISBLANK([Paying Customers]) && [Paying Customers]=0),[Total Spend])",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Budget Review"
+          },
+          {
+            "name": "Zero Output Families",
+            "expression": "COUNTROWS(FILTER(VALUES(Fact_Campaigns[campaign_family]),[Eligible Records]>0 && NOT ISBLANK([Paying Customers]) && [Paying Customers]=0))",
+            "formatString": "#,0",
+            "displayFolder": "Budget Review"
+          },
+          {
+            "name": "Zero Output Spend Share",
+            "expression": "DIVIDE([Zero Output Family Spend],[Total Spend])",
+            "formatString": "0.0%",
+            "displayFolder": "Budget Review"
+          },
+          {
+            "name": "Review Status",
+            "expression": "SWITCH(TRUE(),[Eligible Records]=0,\"No eligible records\",ISBLANK([Paying Customers]),\"Missing output\",[Paying Customers]=0,\"Investigate objective and lag\",\"Evaluate with controlled test\")",
+            "formatString": "",
+            "displayFolder": "Budget Review"
+          },
+          {
+            "name": "Funnel Value",
+            "expression": "SWITCH(SELECTEDVALUE(Funnel_Stages[Stage]),\"Impressions\",[Impressions],\"Clicks\",[Clicks],\"Signups\",[Signups],\"KYC started\",[KYC Started],\"KYC completed\",[KYC Completed],\"Funded accounts\",[Funded Accounts],\"Paying customers\",[Paying Customers])",
+            "formatString": "#,0",
+            "displayFolder": "Funnel"
+          },
+          {
+            "name": "Quality Issue Records",
+            "expression": "SWITCH(SELECTEDVALUE(Quality_Issues[Issue]),\"Missing dates\",[Missing Dates],\"Date conflicts\",[Date Conflicts],\"Incomplete funnels\",[Incomplete Funnels],\"Funnel violations\",[Funnel Violations],\"Missing names\",[Missing Names],\"Missing channels\",[Missing Channels],\"Missing segments\",[Missing Segments],\"Negative spend\",[Negative Spend Records],\"Missing revenue\",[Missing Revenue])",
+            "formatString": "#,0",
+            "displayFolder": "Data Quality"
+          },
+          {
+            "name": "Selected Channel Benchmark CAC",
+            "expression": "CALCULATE([CAC],ALLSELECTED(Fact_Campaigns[marketing_channel]))",
+            "formatString": "\"CAD \"#,0.00",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "Above Benchmark Channel Count",
+            "expression": "VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))",
+            "formatString": "#,0",
+            "displayFolder": "Efficiency"
+          },
+          {
+            "name": "Observed Efficiency Ratio",
+            "expression": "DIVIDE([Selected Channel Benchmark CAC],[CAC])",
+            "formatString": "0.00\"x\"",
+            "displayFolder": "Efficiency"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Date",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "isKey": true,
+            "formatString": "yyyy-MM-dd"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n Dates=List.Dates(#date(2025,1,1),730,#duration(1,0,0,0)),\n T=Table.FromList(Dates,Splitter.SplitByNothing(),{\"Date\"}),\n Typed=Table.TransformColumnTypes(T,{{\"Date\",type date}}),\n Year=Table.AddColumn(Typed,\"Year\",each Date.Year([Date]),Int64.Type),\n Month=Table.AddColumn(Year,\"YearMonth\",each Date.ToText([Date],\"yyyy-MM\"),type text)\nin Month"
+            }
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "Funnel_Stages",
+        "columns": [
+          {
+            "name": "Stage",
+            "dataType": "string",
+            "sourceColumn": "Stage",
+            "summarizeBy": "none",
+            "sortByColumn": "Sort"
+          },
+          {
+            "name": "Sort",
+            "dataType": "int64",
+            "sourceColumn": "Sort",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Funnel_Stages",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "#table(type table [Stage=text, Sort=Int64.Type],{{\"Impressions\",1},{\"Clicks\",2},{\"Signups\",3},{\"KYC started\",4},{\"KYC completed\",5},{\"Funded accounts\",6},{\"Paying customers\",7}})"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Quality_Issues",
+        "columns": [
+          {
+            "name": "Issue",
+            "dataType": "string",
+            "sourceColumn": "Issue",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Quality_Issues",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "#table(type table [Issue=text],{{\"Missing dates\"},{\"Date conflicts\"},{\"Incomplete funnels\"},{\"Funnel violations\"},{\"Missing names\"},{\"Missing channels\"},{\"Missing segments\"},{\"Negative spend\"},{\"Missing revenue\"}})"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "CampaignDate",
+        "fromTable": "Fact_Campaigns",
+        "fromColumn": "trend_date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date",
+        "crossFilteringBehavior": "oneDirection"
+      }
+    ]
+  }
+}

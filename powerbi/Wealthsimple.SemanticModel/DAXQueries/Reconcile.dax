@@ -1,0 +1,2 @@
+EVALUATE
+ROW("Records",[Source Records],"Eligible",[Eligible Records],"Cost",[Total Spend],"Paying",[Paying Customers],"CAC",[CAC],"Revenue",[First Month Revenue],"ROAS",[ROAS],"Zero output cost",[Zero Output Family Spend])

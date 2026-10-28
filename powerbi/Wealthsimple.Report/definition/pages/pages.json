@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "01_quality",
+    "02_spend",
+    "03_funnel",
+    "04_channels",
+    "05_revenue",
+    "06_audience",
+    "07_budget"
+  ],
+  "activePageName": "01_quality"
+}

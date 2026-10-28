@@ -1,4 +1,4 @@
-# Wealthsimple Marketing Analytics — Review in Progress
+# Wealthsimple Marketing Analytics — Reviewed Analysis and Deliverables
 
 Fictional training data, not actual Wealthsimple business results.
 
@@ -44,6 +44,15 @@ python -m unittest discover -s tests -v
 - `scripts/`: portable Python pipeline and category mappings.
 - `tests/`: nine integrity and reconciliation tests.
 
-## Completion status
+## Deliverables and Power BI status
 
-The analysis pipeline passes nine tests. This is a reviewed analytical working package, not the final submission. The brief still requires a tested interactive Power BI report, Power Query transformations, DAX, a 1–2 page recommendation report and a revised executive deck. Those deliverables are not included in this checkpoint. No PBIX or completed Power BI dashboard is claimed. The reviewed analytical package is published here; final Power BI submission deliverables remain in progress.
+- [Two-page recommendation report](reports/Wealthsimple_Recommendation_Report.docx)
+- [Executive presentation — ten editable slides](reports/Wealthsimple_Executive_Deck.pptx)
+- [Power BI source project and Desktop instructions](powerbi/START_HERE.md)
+- [55-measure DAX catalogue](powerbi/DAX_Measures.md)
+- [Brief compliance and submission checklist](docs/Brief_Compliance.md)
+- [Analysis methodology](docs/Analysis_Methodology.md)
+
+The report and executive deck are complete. The Power BI source contains seven pages, native visual definitions, an import model and Power Query transformations. **Desktop execution, interaction checks, remaining visual refinements and the final PBIX save are still pending.** Source-file validation does not establish a working PBIX. Follow the reconciliation checklist before submission.
+
+The Power BI source reads the unchanged Excel workbook through Power Query; the processed Python outputs provide the independent validation baseline. No Power BI Service deployment or public interactive dashboard is claimed.
