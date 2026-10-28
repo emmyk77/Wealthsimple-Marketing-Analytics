@@ -2,7 +2,7 @@
 
 Fictional training data, not actual Wealthsimple business results.
 
-## Corrected analysis
+## Analysis
 
 The source contains 2,000 campaign records. A conservative comparison population of 1,671 records has complete, nonnegative and sequential funnel counts, including KYC, and usable marketing costs.
 
