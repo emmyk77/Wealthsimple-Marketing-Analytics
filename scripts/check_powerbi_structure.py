@@ -2,6 +2,8 @@
 from pathlib import Path
 import json
 ROOT=Path(__file__).resolve().parents[1]/'powerbi'
+version=json.loads((ROOT/'Wealthsimple.Report/definition/version.json').read_text())
+assert version['version']=='2.0.0', 'Unexpected PBIR content version; use the Desktop-tested 2.0.0 baseline'
 model=json.loads((ROOT/'Wealthsimple.SemanticModel/model.bim').read_text())['model']
 tables={t['name']:t for t in model['tables']}
 for t in tables.values():
@@ -24,4 +26,5 @@ for page in (ROOT/'Wealthsimple.Report/definition/pages').glob('*/page.json'):
   for b in vs[i+1:]:assert not (a['x']<b['x']+b['width'] and b['x']<a['x']+a['width'] and a['y']<b['y']+b['height'] and b['y']<a['y']+a['height'])
 assert len(visuals)==105
 print('PASS: 105 visual bindings and bounds, no overlaps, relationship endpoints. Desktop execution remains unverified.')
+
 

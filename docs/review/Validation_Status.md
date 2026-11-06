@@ -1,5 +1,7 @@
 # Validation record — 28 October 2026
 
+> Historical source-validation record. For the later Desktop screenshot evidence, incomplete file submission and outstanding checks, see [Desktop handoff — 6 November 2026](Desktop_Handoff_2026-11-06.md). The screenshots demonstrate populated pages; they do not certify the complete latest editable package or interactions.
+
 - Python pipeline: all nine integrity and reconciliation tests pass.
 - Recommendation report: two rendered pages visually inspected; layout and tables checked.
 - Executive deck: ten rendered slides visually inspected; package, layout, native chart workbook and import checks pass. Three editable charts and six native tables retained. Native Microsoft PowerPoint execution was not tested.
@@ -19,3 +21,4 @@ Run `npm install --no-save @microsoft/powerquery-parser@4.0.1`, then `node scrip
 ## Column and measure naming correction
 
 Desktop reported that Impressions conflicted with the impressions column. The same case-insensitive collision also affected Clicks and Signups. The model columns are now raw_impressions, raw_clicks and raw_signups; sourceColumn remains the unchanged Power Query field name. The three aggregation expressions and DAX catalogue use the renamed model columns. Dashboard measure names and visual bindings remain unchanged. The generator produces the same targeted fix. The structural validator now rejects case-insensitive column/measure collisions. The original model fails that check; the corrected model has no collisions. All fully qualified Fact_Campaigns column references resolve, and all 105 visual bindings and layout checks pass. Desktop import and refresh still require user verification.
+

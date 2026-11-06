@@ -129,7 +129,7 @@ dump(Path('Wealthsimple.pbip'),{'$schema':'https://developer.microsoft.com/json-
 dump(Path('Wealthsimple.Report/definition.pbir'),{'$schema':'https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json','version':'4.0','datasetReference':{'byPath':{'path':'../Wealthsimple.SemanticModel'}}})
 def schema(n,v):return f'https://developer.microsoft.com/json-schemas/fabric/item/report/definition/{n}/{v}/schema.json'
 base=Path('Wealthsimple.Report/definition')
-dump(base/'version.json',{'$schema':schema('versionMetadata','1.0.0'),'version':'4.0.0'})
+dump(base/'version.json',{'$schema':schema('versionMetadata','1.0.0'),'version':'2.0.0'})
 dump(base/'report.json',{'$schema':schema('report','2.1.0'),'themeCollection':{},'settings':{'useStylableVisualContainerHeader':True}})
 dump(Path('Wealthsimple_Theme.json'),{'name':'Wealthsimple training analytics','dataColors':['#007F78','#17324D','#D99A2B','#64748B','#C2463C','#7B61A8'],'background':'#FFFFFF','foreground':'#17324D','tableAccent':'#007F78'})
 # Native PBIR visuals, stable names; no screenshots pretending to be interactive visuals.
@@ -163,4 +163,5 @@ for pid,label,cards,charts in pages:
 dump(base/'pages/pages.json',{'$schema':schema('pagesMetadata','1.0.0'),'pageOrder':[p[0] for p in pages],'activePageName':pages[0][0]})
 write(Path('Wealthsimple.SemanticModel/DAXQueries/Reconcile.dax'),'EVALUATE\nROW("Records",[Source Records],"Eligible",[Eligible Records],"Cost",[Total Spend],"Paying",[Paying Customers],"CAC",[CAC],"Revenue",[First Month Revenue],"ROAS",[ROAS],"Zero output cost",[Zero Output Family Spend])\n')
 print('Generated',len(measures),'measures,',len(pages),'pages and 105 native visuals. Desktop validation pending.')
+
 

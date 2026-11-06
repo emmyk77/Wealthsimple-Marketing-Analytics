@@ -1,6 +1,16 @@
-# Wealthsimple Marketing Analytics — Reviewed Analysis and Deliverables
+# Wealthsimple Marketing Analytics
 
 Fictional training data, not actual Wealthsimple business results.
+
+## Power BI dashboard preview
+
+Seven report pages have been opened and populated in Power BI Desktop, as shown in the author's screenshots submitted on 6 November 2026. The screenshots below are actual Desktop captures, not generated design mockups.
+
+![Marketing Spend and CAC dashboard](docs/screenshots/02_spend_and_cac.png)
+
+**[View all seven dashboard pages](docs/Dashboard_Gallery.md)** · **[Current status and remaining steps](docs/review/Desktop_Handoff_2026-11-06.md)**
+
+**Release status:** dashboard screenshots are available; the final editable Desktop package is still pending. The uploaded `Wealthsimple back up.pbip` is a 192-byte launcher referencing a report folder that was not included. The existing `powerbi/` folder is the earlier authored source baseline, with the report-version correction applied; it does not yet contain the latest manual formatting shown in the screenshots. No final PBIX or Power BI Service deployment is claimed.
 
 ## Analysis
 
@@ -41,6 +51,8 @@ python -m unittest discover -s tests -v
 - `data/processed/`: cleaned records, field profile, date table and record-level audit log.
 - `data/analysis/`: reconciled metrics by channel, campaign, family, objective, product, device, segment and province, plus sensitivity analysis.
 - `docs/images/`: seven regenerated analytical charts.
+- `docs/screenshots/`: seven unaltered Power BI Desktop captures, with a source/hash manifest.
+- `docs/Dashboard_Gallery.md`: dashboard previews and page-specific review notes.
 - `scripts/`: portable Python pipeline and category mappings.
 - `tests/`: nine integrity and reconciliation tests.
 
@@ -53,6 +65,7 @@ python -m unittest discover -s tests -v
 - [Brief compliance and submission checklist](docs/Brief_Compliance.md)
 - [Analysis methodology](docs/Analysis_Methodology.md)
 
-The report and executive deck are complete. The Power BI source contains seven pages, native visual definitions, an import model and Power Query transformations. **Desktop execution, interaction checks, remaining visual refinements and the final PBIX save are still pending.** Source-file validation does not establish a working PBIX. Follow the reconciliation checklist before submission.
+The report and executive deck were completed in the earlier review. The Power BI source contains seven pages, native visual definitions, an import model and Power Query transformations. **The author's screenshots now establish that all seven pages render with populated data in Desktop.** Visible headline totals agree with the baseline for source/eligible/excluded records, spend, paying customers and CAC. This is screenshot evidence, not an independent execution of the latest model: full DAX reconciliation, interaction testing, final visual corrections, the updated report/model folders and a reopened final PBIX are still pending. The Budget page still displays a blank benchmark-count card. Follow the [handoff checklist](docs/review/Desktop_Handoff_2026-11-06.md) before submission.
 
 The Power BI source reads the unchanged Excel workbook through Power Query; the processed Python outputs provide the independent validation baseline. No Power BI Service deployment or public interactive dashboard is claimed.
+

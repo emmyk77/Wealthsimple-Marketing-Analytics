@@ -1,6 +1,10 @@
 # Open and validate the Power BI project
 
-This is an authored source project, not a Desktop-tested PBIX. It contains seven pages, 105 native visual definitions, 55 DAX measures and Power Query transformations. No credentials, service connection or embedded data cache is included. The supplied workbook is fictional training data.
+This folder is the authored source baseline, not the latest manually formatted Desktop package or a final PBIX. It contains seven pages, 105 native visual definitions, 55 DAX measures and Power Query transformations. The author's [November 2026 screenshots](../docs/Dashboard_Gallery.md) demonstrate populated Desktop pages, but the corresponding updated report/model folders have not been supplied. No credentials, service connection or embedded data cache is included. The supplied workbook is fictional training data.
+
+The report content version in `Wealthsimple.Report/definition/version.json` is corrected to `2.0.0`, matching the version that resolved the missing-page problem during Desktop troubleshooting. This is separate from the valid `4.0` version in `definition.pbir`. The generator retains this correction. Do not run the generator over your manually edited project without making a separate backup; it generates the earlier baseline layout.
+
+See [the current handoff and remaining steps](../docs/review/Desktop_Handoff_2026-11-06.md). The archived `Wealthsimple back up.pbip` submission is only a launcher, not a self-contained report.
 
 ## Desktop steps
 
@@ -62,3 +66,4 @@ This is a local-file analytics project with no application login, API tokens or 
 - [Microsoft: PBIR report files](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report)
 
 Microsoft's public JSON schemas are referenced by the report definition files. JSON validation can check structure; it cannot prove that M, DAX, visual roles or refresh behavior execute correctly in Desktop.
+

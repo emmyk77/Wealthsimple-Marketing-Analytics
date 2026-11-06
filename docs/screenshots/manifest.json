@@ -1,0 +1,48 @@
+{
+  "captured_by": "Project author in Power BI Desktop",
+  "submission_date": "2026-11-06",
+  "images": [
+    {
+      "path": "docs/screenshots/01_data_quality.png",
+      "source": "image(20261106-234318).png",
+      "bytes": 100639,
+      "sha256": "a8e218de43de939b57fc17537b091be27690ee7ec8b0678b6a6fb76281e8b304"
+    },
+    {
+      "path": "docs/screenshots/02_spend_and_cac.png",
+      "source": "image(20261106-234342).png",
+      "bytes": 134038,
+      "sha256": "0e2608b5eec90675f0b3777e791aed4b09bace13e97f261c4fe9026c44632c38"
+    },
+    {
+      "path": "docs/screenshots/03_conversion_funnel.png",
+      "source": "image(20261106-234429).png",
+      "bytes": 119818,
+      "sha256": "92e046ecb4f2f302d5851026adbeaa5edd1e6c34f6c496128fe7a2882ea20fff"
+    },
+    {
+      "path": "docs/screenshots/04_channel_and_campaign.png",
+      "source": "image(20261106-234502).png",
+      "bytes": 157938,
+      "sha256": "0916e8a410dc8c4c44f129aee7a2651738838c650e07dba4126a53896d8493b3"
+    },
+    {
+      "path": "docs/screenshots/05_revenue_and_roas.png",
+      "source": "image(20261106-234533).png",
+      "bytes": 147071,
+      "sha256": "173310763f81271b1ae2325e93136b45426e3deae7e2c3a3199a3d4fe7703364"
+    },
+    {
+      "path": "docs/screenshots/06_segment_and_region.png",
+      "source": "image(20261106-234612).png",
+      "bytes": 127272,
+      "sha256": "b133cdc1f17d6d370c6c4fee9428d99ce9088eb47de556196f7a601d75a8077a"
+    },
+    {
+      "path": "docs/screenshots/07_budget_optimization.png",
+      "source": "image(20261106-234648).png",
+      "bytes": 119527,
+      "sha256": "fa7c440cf981a51b3abdc15f9639673274148588027b88130ee123a934a11533"
+    }
+  ]
+}
