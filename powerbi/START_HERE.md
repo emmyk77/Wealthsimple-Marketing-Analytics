@@ -1,12 +1,16 @@
 # Open and validate the Power BI project
 
-[Download the Power BI report](Wealthsimple_Marketing_Analytics.pbix) to open the seven formatted pages in Desktop. The PBIP project alongside it is the earlier authored source baseline. That project contains seven pages, 105 native visual definitions, 55 DAX measures and Power Query transformations. The author's [November 2026 screenshots](../docs/Dashboard_Gallery.md) demonstrate populated Desktop pages, but the corresponding updated report/model folders have not been supplied. The baseline PBIP source excludes local caches. The downloadable PBIX contains an embedded model. The supplied workbook is fictional training data.
+[Download the Power BI report](Wealthsimple_Marketing_Analytics.pbix) to view the seven formatted dashboards with their embedded data. To edit the source, download and extract the whole repository, then open [desktop/Wealthsimple.pbip](desktop/Wealthsimple.pbip) on Windows. Keep its sibling report and semantic model folders together.
+
+In Power BI Desktop, go to **Transform data → Manage parameters → DataRoot**. Enter the local repository folder containing `data/raw/Power_BI_project.xlsx`, then select **Close & Apply → Refresh**. With all filters cleared, check for 2,000 source records, 1,671 eligible and 329 excluded. Select one channel to check the visuals respond, then clear it.
+
+The Desktop project uses the author's saved layout with three slicers and four cards on each page. The project at `powerbi/Wealthsimple.pbip` is the earlier generated baseline. The instructions below document that baseline. The workbook contains fictional training data.
 
 The report content version in `Wealthsimple.Report/definition/version.json` is corrected to `2.0.0`, matching the version that resolved the missing-page problem during Desktop troubleshooting. This is separate from the valid `4.0` version in `definition.pbir`. The generator retains this correction. Do not run the generator over your manually edited project without making a separate backup; it generates the earlier baseline layout.
 
 See [the current handoff and remaining steps](../docs/review/Desktop_Handoff_2026-11-06.md). The archived `Wealthsimple back up.pbip` submission is only a launcher, not a self-contained report.
 
-## Desktop steps
+## Earlier generated project and validation steps
 
 1. Download the **whole repository** using GitHub → Code → Download ZIP, then extract it. Keep its folder structure.
 2. Install/open a current Power BI Desktop on Windows with Power BI project and enhanced report format support. Open `powerbi/Wealthsimple.pbip`. If your installed version rejects the source format, update Desktop; do not rename PBIP to PBIX.

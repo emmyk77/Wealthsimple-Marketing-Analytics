@@ -1,0 +1,23 @@
+table Funnel_Stages
+	lineageTag: 0e58cee8-de9f-49ae-98d1-e281a1d18192
+
+	column Stage
+		dataType: string
+		lineageTag: d3bd12c3-6627-411d-a3c8-717c27f858ff
+		summarizeBy: none
+		sourceColumn: Stage
+		sortByColumn: Sort
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: b01542b7-da58-4548-89f2-3b7bb7810c3e
+		summarizeBy: none
+		sourceColumn: Sort
+
+	partition Funnel_Stages = m
+		mode: import
+		source = #table(type table [Stage=text, Sort=Int64.Type],{{"Impressions",1},{"Clicks",2},{"Signups",3},{"KYC started",4},{"KYC completed",5},{"Funded accounts",6},{"Paying customers",7}})
+
+	annotation PBI_ResultType = Table
+

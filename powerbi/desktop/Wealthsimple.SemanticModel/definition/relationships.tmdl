@@ -1,0 +1,9 @@
+relationship CampaignDate
+	fromColumn: Fact_Campaigns.trend_date
+	toColumn: Dim_Date.Date
+
+relationship f36d6390-4831-4edf-81e9-d155df164366
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Campaigns.event_date
+	toColumn: LocalDateTable_c98a2348-2d40-4a0d-8a37-aef013dabe71.Date
+

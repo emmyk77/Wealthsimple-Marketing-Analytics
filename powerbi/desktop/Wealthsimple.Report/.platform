@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Wealthsimple"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d245b433-1658-4dfb-956a-a90219084221"
+  }
+}

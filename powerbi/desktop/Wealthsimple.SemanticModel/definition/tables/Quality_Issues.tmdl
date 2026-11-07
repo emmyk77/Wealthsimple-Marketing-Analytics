@@ -1,0 +1,15 @@
+table Quality_Issues
+	lineageTag: 63ccc058-2f18-4a23-bb7d-65a83fb8cdc5
+
+	column Issue
+		dataType: string
+		lineageTag: 322f4696-3bfb-4678-a075-3b1aa5961545
+		summarizeBy: none
+		sourceColumn: Issue
+
+	partition Quality_Issues = m
+		mode: import
+		source = #table(type table [Issue=text],{{"Missing dates"},{"Date conflicts"},{"Incomplete funnels"},{"Funnel violations"},{"Missing names"},{"Missing channels"},{"Missing segments"},{"Negative spend"},{"Missing revenue"}})
+
+	annotation PBI_ResultType = Table
+

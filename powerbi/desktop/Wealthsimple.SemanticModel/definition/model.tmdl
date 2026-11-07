@@ -1,0 +1,21 @@
+model Model
+	culture: en-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Fact_Campaigns","Dim_Date","Funnel_Stages","Quality_Issues","DataRoot","Raw_Campaigns"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fact_Campaigns
+ref table Dim_Date
+ref table Funnel_Stages
+ref table Quality_Issues
+ref table DateTableTemplate_db919d0b-1a26-4dcc-be8f-7a8842cf28b7
+ref table LocalDateTable_c98a2348-2d40-4a0d-8a37-aef013dabe71
+

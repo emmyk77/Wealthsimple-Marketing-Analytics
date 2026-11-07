@@ -2,7 +2,7 @@
 
 These are the author's actual Power BI Desktop screenshots submitted on 6 November 2026, preserved without retouching. They show the current local report, including outstanding issues. They are not generated design examples and are not an interactive report.
 
-[Download the Power BI report](../powerbi/Wealthsimple_Marketing_Analytics.pbix) to explore these seven pages in Desktop. The repository’s separate PBIP source still uses the earlier layout. See the [handoff](review/Desktop_Handoff_2026-11-06.md) for remaining checks.
+[Download the Power BI report](../powerbi/Wealthsimple_Marketing_Analytics.pbix) to explore these seven pages in Desktop. The [editable project](../powerbi/desktop/) contains the matching report layout. See the [handoff](review/Desktop_Handoff_2026-11-06.md) for remaining checks.
 
 ## 1. Data Quality
 ![Marketing Data Quality](screenshots/01_data_quality.png)

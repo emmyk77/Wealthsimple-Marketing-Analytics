@@ -1,6 +1,6 @@
 # Validation record — 28 October 2026
 
-> Historical source-validation record. The [submitted PBIX](../../powerbi/Wealthsimple_Marketing_Analytics.pbix) passed archive integrity checks on 7 November 2026. It contains seven visible report pages and an embedded model. Desktop refresh and interaction testing remain open. See the [handoff](Desktop_Handoff_2026-11-06.md).
+> Historical source-validation record. The [submitted PBIX](../../powerbi/Wealthsimple_Marketing_Analytics.pbix) passed archive integrity checks on 7 November 2026. It contains seven visible report pages and an embedded model. The [editable project](../../powerbi/desktop/) contains 84 visual containers and 55 measures. Its report layout and theme resources match the PBIX. Desktop refresh and interaction testing remain open. See the [handoff](Desktop_Handoff_2026-11-06.md).
 
 - Python pipeline: all nine integrity and reconciliation tests pass.
 - Recommendation report: two rendered pages visually inspected; layout and tables checked.

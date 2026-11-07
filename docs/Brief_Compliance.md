@@ -1,6 +1,6 @@
 # Brief compliance and final submission checklist
 
-> Updated 7 November 2026. The [downloadable PBIX](../powerbi/Wealthsimple_Marketing_Analytics.pbix) contains seven pages and an embedded model. The [screenshot gallery](Dashboard_Gallery.md) shows the populated pages. The Desktop-saved PBIP source ZIP, refresh and interaction checks remain pending. See the [handoff](review/Desktop_Handoff_2026-11-06.md).
+> Updated 7 November 2026. The [downloadable PBIX](../powerbi/Wealthsimple_Marketing_Analytics.pbix) contains seven pages and an embedded model. The [screenshot gallery](Dashboard_Gallery.md) shows the populated pages. The [Desktop-saved project](../powerbi/desktop/) is available. Its report definitions match the submitted PBIX. Refresh and interaction checks remain pending. See the [handoff](review/Desktop_Handoff_2026-11-06.md).
 
 Basis: supplied “FinTech Marketing Spend Efficiency, Customer Acquisition Cost, and Paid Customer Conversion Analysis in Wealthsimple Canada” project brief. This is a fictional training exercise. The original brief's June 2026 dates are historical; this revision is dated 28 October 2026 and makes no on-time submission claim.
 
@@ -12,8 +12,8 @@ Basis: supplied “FinTech Marketing Spend Efficiency, Customer Acquisition Cost
 | Executive summary PPTX or PDF | `reports/Wealthsimple_Executive_Deck.pptx` | Completed; ten editable slides |
 | Data cleaning, standardized categories, auditable issues | Python pipeline, processed records and issue log | Completed and reconciled |
 | Power Query cleaning | `powerbi/powerquery/` and model partitions; Desktop captures | Loaded results visible in screenshots; independent repeat refresh pending |
-| DAX measures and data model | `powerbi/DAX_Measures.md`, model.bim; Desktop captures | Selected displayed totals match; full latest-model reconciliation pending |
-| Seven interactive dashboard pages | Authored PBIR baseline and `docs/screenshots/` | Rendering demonstrated; latest edited source and interaction verification pending |
+| DAX measures and data model | [Desktop-saved TMDL model](../powerbi/desktop/Wealthsimple.SemanticModel/definition/) and Desktop captures | Selected displayed totals match; full latest-model reconciliation pending |
+| Seven interactive dashboard pages | [Desktop-saved report](../powerbi/desktop/Wealthsimple.Report/) and screenshots | Seven pages and 84 visual containers verified. Interaction checks pending |
 | Final `.pbix` | [Submitted report](../powerbi/Wealthsimple_Marketing_Analytics.pbix) | Archive and page inventory verified. Desktop refresh and interaction checks pending. |
 
 ## Seven-page coverage

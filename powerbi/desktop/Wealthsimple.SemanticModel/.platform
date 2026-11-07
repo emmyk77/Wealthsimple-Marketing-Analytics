@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Wealthsimple"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "18b6c6a6-b4a6-4a37-89f1-30b1cc3cca53"
+  }
+}

@@ -1,0 +1,13 @@
+expression DataRoot = "C:/CHANGE_ME/Wealthsimple-Marketing-Analytics" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text]
+	lineageTag: 649da564-10f4-4817-8217-03ddb4a38f53
+
+	annotation PBI_ResultType = Text
+
+expression Raw_Campaigns =
+		let
+		    Workbook = Excel.Workbook(File.Contents(DataRoot & "/data/raw/Power_BI_project.xlsx"), null, true),
+		    Sheet = Workbook{[Item="Sheet1",Kind="Sheet"]}[Data],
+		    Headers = Table.PromoteHeaders(Sheet, [PromoteAllScalars=true])
+		in Headers
+	lineageTag: 73a669bb-cd6f-4e83-b2f9-70c603fdf8a5
+

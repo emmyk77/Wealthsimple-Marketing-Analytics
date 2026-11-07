@@ -1,0 +1,39 @@
+table Dim_Date
+	lineageTag: d6edc4f4-1007-4341-a6b8-3977c2845eca
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-MM-dd
+		lineageTag: 680d70ba-6d3a-4af1-8c43-c011c1d53e90
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		lineageTag: f904204b-33d5-4dac-b5ea-e77b191381c8
+		summarizeBy: none
+		sourceColumn: Year
+
+	column YearMonth
+		dataType: string
+		lineageTag: 6d420f90-5b80-470e-bea2-3a36578271e7
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	partition Dim_Date = m
+		mode: import
+		source =
+				let
+				 Dates=List.Dates(#date(2025,1,1),730,#duration(1,0,0,0)),
+				 T=Table.FromList(Dates,Splitter.SplitByNothing(),{"Date"}),
+				 Typed=Table.TransformColumnTypes(T,{{"Date",type date}}),
+				 Year=Table.AddColumn(Typed,"Year",each Date.Year([Date]),Int64.Type),
+				 Month=Table.AddColumn(Year,"YearMonth",each Date.ToText([Date],"yyyy-MM"),type text)
+				in Month
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,703 @@
+table Fact_Campaigns
+	lineageTag: 6d91ea82-edf3-4bc8-97fc-37b67b8caaa9
+
+	measure 'Source Records' = COUNTROWS(Fact_Campaigns)
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: c5e632bd-cafc-4516-b240-c8ccc6249304
+
+	measure 'Eligible Records' = CALCULATE(COUNTROWS(Fact_Campaigns), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: fbf82a70-a09c-470e-ad2e-e21138074b2c
+
+	measure 'Excluded Records' = [Source Records] - [Eligible Records]
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: 60ff9f6d-ff66-409e-8812-0e81ca9c93ef
+
+	measure 'Eligible Share' = DIVIDE([Eligible Records],[Source Records])
+		formatString: 0.0%
+		displayFolder: Overview
+		lineageTag: b2b68de6-96f1-4471-afb4-4812f3a98f14
+
+	measure 'Total Spend' = CALCULATE(SUM(Fact_Campaigns[total_marketing_cost_cad]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: "CAD "#,0.00
+		displayFolder: Overview
+		lineageTag: 75247f64-bc34-43df-9c00-5d293246095d
+
+	measure 'Ad Spend' = CALCULATE(SUM(Fact_Campaigns[ad_spend_cad]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: "CAD "#,0.00
+		displayFolder: Overview
+		lineageTag: 20462f17-0f55-4e79-9145-bf6265d0dcdd
+
+	measure Impressions = CALCULATE(SUM(Fact_Campaigns[raw_impressions]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: 1a620df0-185a-4957-8c26-754a6a64bd3c
+
+	measure Clicks = CALCULATE(SUM(Fact_Campaigns[raw_clicks]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: f57557e0-53d7-486d-a58a-afcdf432a1b1
+
+	measure Signups = CALCULATE(SUM(Fact_Campaigns[raw_signups]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: 8dbf8250-496f-4c7a-9124-65398af82672
+
+	measure 'KYC Started' = CALCULATE(SUM(Fact_Campaigns[kyc_started]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: 199fe9db-9abf-4abd-bdac-0a2921812bed
+
+	measure 'KYC Completed' = CALCULATE(SUM(Fact_Campaigns[kyc_completed]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: c70fae9c-df1f-4238-a62c-fe8f9f936720
+
+	measure 'Funded Accounts' = CALCULATE(SUM(Fact_Campaigns[funded_accounts]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: b2a805c0-302e-438c-a580-0add92371474
+
+	measure 'Paying Customers' = CALCULATE(SUM(Fact_Campaigns[paying_customers]), KEEPFILTERS(Fact_Campaigns[analysis_eligible] = TRUE()))
+		formatString: #,0
+		displayFolder: Overview
+		lineageTag: 23e78cad-0f91-403c-b163-4a52a3dc12b4
+
+	measure CAC = DIVIDE([Total Spend],[Paying Customers])
+		formatString: "CAD "#,0.00
+		displayFolder: Efficiency
+		lineageTag: b4be8341-e7be-43a4-8711-6925cf0dcb14
+
+	measure CPC = DIVIDE([Total Spend],[Clicks])
+		formatString: "CAD "#,0.00
+		displayFolder: Efficiency
+		lineageTag: 52e23550-defa-4525-958c-d2c3bf47880f
+
+	measure CPS = DIVIDE([Total Spend],[Signups])
+		formatString: "CAD "#,0.00
+		displayFolder: Efficiency
+		lineageTag: 8ecfa783-d5c8-4b7e-adec-c34d8bd5382b
+
+	measure CTR = DIVIDE([Clicks],[Impressions])
+		formatString: 0.00%
+		displayFolder: Efficiency
+		lineageTag: 0bf040e6-172c-4fcf-8cae-497158a33cb9
+
+	measure 'Click to Signup' = DIVIDE([Signups],[Clicks])
+		formatString: 0.00%
+		displayFolder: Efficiency
+		lineageTag: 2b7f5926-dfe3-46e8-8718-7167d7296988
+
+	measure 'Signup to Funded' = DIVIDE([Funded Accounts],[Signups])
+		formatString: 0.00%
+		displayFolder: Efficiency
+		lineageTag: 361ea1f2-2fc0-422a-9341-2d5f1d2fd6fc
+
+	measure 'Funded to Paying' = DIVIDE([Paying Customers],[Funded Accounts])
+		formatString: 0.00%
+		displayFolder: Efficiency
+		lineageTag: fb2b9e17-8f26-40bb-98ac-32920e2c64fb
+
+	measure 'Signup to Paying' = DIVIDE([Paying Customers],[Signups])
+		formatString: 0.00%
+		displayFolder: Efficiency
+		lineageTag: d56a9b4d-86e9-40c0-a627-4a1482604a56
+
+	measure 'KYC Completion' = DIVIDE([KYC Completed],[KYC Started])
+		formatString: 0.00%
+		displayFolder: Efficiency
+		lineageTag: 634da67a-a042-4995-acb0-9113f4a31fd4
+
+	measure 'First Month Revenue' = CALCULATE(SUM(Fact_Campaigns[first_month_revenue_cad]), KEEPFILTERS(Fact_Campaigns[revenue_eligible] = TRUE()))
+		formatString: #,0.00
+		displayFolder: Revenue
+		lineageTag: cc65446c-7a7a-4c2e-86c5-20461e611cf1
+
+	measure 'Matched Cost' = CALCULATE(SUM(Fact_Campaigns[total_marketing_cost_cad]), KEEPFILTERS(Fact_Campaigns[revenue_eligible] = TRUE()))
+		formatString: #,0.00
+		displayFolder: Revenue
+		lineageTag: f4712e98-4677-48ab-85e1-5a921f466a2b
+
+	measure 'Matched Paying Customers' = CALCULATE(SUM(Fact_Campaigns[paying_customers]), KEEPFILTERS(Fact_Campaigns[revenue_eligible] = TRUE()))
+		formatString: #,0.00
+		displayFolder: Revenue
+		lineageTag: d8a9cbb3-cecf-4688-b0ee-f1b7c790e2c3
+
+	measure ROAS = DIVIDE(CALCULATE(SUM(Fact_Campaigns[first_month_revenue_cad]),KEEPFILTERS(Fact_Campaigns[roas_eligible] = TRUE())),CALCULATE(SUM(Fact_Campaigns[ad_spend_cad]),KEEPFILTERS(Fact_Campaigns[roas_eligible] = TRUE())))
+		formatString: 0.0000"x"
+		displayFolder: Revenue
+		lineageTag: 21b48d89-57ae-4b5a-a193-6b0077021a16
+
+	measure 'Revenue to Marketing Cost' = DIVIDE([First Month Revenue],[Matched Cost])
+		formatString: 0.0000"x"
+		displayFolder: Revenue
+		lineageTag: 166c993f-ee3e-4505-b95f-e7fd3bc77d17
+
+	measure 'Revenue Cost Gap' = [First Month Revenue] - [Matched Cost]
+		formatString: "CAD "#,0.00
+		displayFolder: Revenue
+		lineageTag: 9ac2e688-cec0-4caf-adab-1c6d7eb0c0cb
+
+	measure 'Revenue per Paying Customer' = DIVIDE([First Month Revenue],[Matched Paying Customers])
+		formatString: "CAD "#,0.00
+		displayFolder: Revenue
+		lineageTag: ce321bc5-c1da-4271-97fd-3e0ce4f30dc0
+
+	measure 'Revenue Records' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[revenue_eligible]=TRUE()))
+		formatString: #,0
+		displayFolder: Revenue
+		lineageTag: 6e6e6520-f13e-4a89-b7be-4bd87904edf6
+
+	measure 'Missing Dates' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_date]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 868c9c01-652c-467b-b30a-e679e14a76e3
+
+	measure 'Date Conflicts' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_date_month_conflict]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: c697ac45-92ff-4c24-a6e4-1aa1e7255558
+
+	measure 'Incomplete Funnels' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_funnel]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 47511062-b6db-4cbb-b5e5-76c08b0da189
+
+	measure 'Funnel Violations' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_funnel_order]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 11fefac1-828f-4286-a4ae-d4bde6559db6
+
+	measure 'Missing Names' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_name]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 123135a7-5644-4deb-a107-3884bbad220d
+
+	measure 'Missing Channels' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_channel]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: db994bad-2028-4546-aa45-7e003683832c
+
+	measure 'Missing Segments' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_segment]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: eb643279-40ab-4b2f-a709-c5be0d8bdaab
+
+	measure 'Negative Spend Records' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_negative_spend]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 4cbe1435-7a44-472b-b489-1185743d5356
+
+	measure 'Missing Revenue' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_missing_revenue]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: f6affd83-a516-423a-a001-6807b7a2c23e
+
+	measure 'Identity Conflict Records' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[flag_campaign_id_conflict]=TRUE()))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 0c4d1950-f23e-4178-81b6-88599823ed8e
+
+	measure 'Known Cost All Rows' = SUM(Fact_Campaigns[total_marketing_cost_cad])
+		formatString: "CAD "#,0.00
+		displayFolder: Data Quality
+		lineageTag: 8ab99886-c782-4446-9115-bde484350f65
+
+	measure 'Excluded Known Cost' = [Known Cost All Rows]-[Total Spend]
+		formatString: "CAD "#,0.00
+		displayFolder: Data Quality
+		lineageTag: d001e095-3a1e-48d4-a7a8-da411153d881
+
+	measure 'Reconstructed Costs' = CALCULATE(COUNTROWS(Fact_Campaigns),KEEPFILTERS(Fact_Campaigns[cost_basis]="complete component sum"))
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 47374725-ebf2-46d3-ae39-6e7a2ba3e605
+
+	measure 'Trusted Monthly Spend' = CALCULATE([Total Spend],KEEPFILTERS(Fact_Campaigns[date_eligible]=TRUE()))
+		formatString: "CAD "#,0.00
+		displayFolder: Time
+		lineageTag: 0281dc1d-da2e-4c91-bd25-02a7b39dbdd8
+
+	measure 'Trusted Monthly Revenue' = CALCULATE([First Month Revenue],KEEPFILTERS(Fact_Campaigns[date_eligible]=TRUE()))
+		formatString: "CAD "#,0.00
+		displayFolder: Time
+		lineageTag: 16fd2b07-c692-40ea-bf90-7411ab6907e5
+
+	measure 'Undated or Conflicted Spend' = [Total Spend]-[Trusted Monthly Spend]
+		formatString: "CAD "#,0.00
+		displayFolder: Time
+		lineageTag: c9796444-9436-4e55-b468-f576b7f414ae
+
+	measure 'Zero Output Family Spend' = SUMX(FILTER(VALUES(Fact_Campaigns[campaign_family]),[Eligible Records]>0 && NOT ISBLANK([Paying Customers]) && [Paying Customers]=0),[Total Spend])
+		formatString: "CAD "#,0.00
+		displayFolder: Budget Review
+		lineageTag: c89f9d66-321b-42de-b560-e46774815ca8
+
+	measure 'Zero Output Families' = COUNTROWS(FILTER(VALUES(Fact_Campaigns[campaign_family]),[Eligible Records]>0 && NOT ISBLANK([Paying Customers]) && [Paying Customers]=0))
+		formatString: #,0
+		displayFolder: Budget Review
+		lineageTag: c4ff25e6-6546-48fa-a537-79abfae54d63
+
+	measure 'Zero Output Spend Share' = DIVIDE([Zero Output Family Spend],[Total Spend])
+		formatString: 0.0%
+		displayFolder: Budget Review
+		lineageTag: d23587ce-5b76-407a-b68b-27c5ef52d9ef
+
+	measure 'Review Status' = SWITCH(TRUE(),[Eligible Records]=0,"No eligible records",ISBLANK([Paying Customers]),"Missing output",[Paying Customers]=0,"Investigate objective and lag","Evaluate with controlled test")
+		displayFolder: Budget Review
+		lineageTag: f197cdda-4734-4684-9130-907d484acf63
+
+	measure 'Funnel Value' = SWITCH(SELECTEDVALUE(Funnel_Stages[Stage]),"Impressions",[Impressions],"Clicks",[Clicks],"Signups",[Signups],"KYC started",[KYC Started],"KYC completed",[KYC Completed],"Funded accounts",[Funded Accounts],"Paying customers",[Paying Customers])
+		formatString: #,0
+		displayFolder: Funnel
+		lineageTag: 7c6e7778-213a-4aad-8b26-2e37c8e6b50f
+
+	measure 'Quality Issue Records' = SWITCH(SELECTEDVALUE(Quality_Issues[Issue]),"Missing dates",[Missing Dates],"Date conflicts",[Date Conflicts],"Incomplete funnels",[Incomplete Funnels],"Funnel violations",[Funnel Violations],"Missing names",[Missing Names],"Missing channels",[Missing Channels],"Missing segments",[Missing Segments],"Negative spend",[Negative Spend Records],"Missing revenue",[Missing Revenue])
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: db7befed-4644-4996-9cf7-6cbe5a7c6340
+
+	measure 'Selected Channel Benchmark CAC' = CALCULATE([CAC],ALLSELECTED(Fact_Campaigns[marketing_channel]))
+		formatString: "CAD "#,0.00
+		displayFolder: Efficiency
+		lineageTag: 76727f07-9488-441c-9b5c-cd755be434f6
+
+	measure 'Above Benchmark Channel Count' = VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))
+		formatString: #,0
+		displayFolder: Efficiency
+		lineageTag: 5ffea17f-5ec5-4b7d-bb71-81b850ad6b16
+
+	measure 'Observed Efficiency Ratio' = DIVIDE([Selected Channel Benchmark CAC],[CAC])
+		formatString: 0.00"x"
+		displayFolder: Efficiency
+		lineageTag: 941f75e4-6e17-4d8c-910b-9f74110d6a42
+
+	column campaign_record_id
+		dataType: string
+		lineageTag: 5369b9ff-dcac-4db9-853e-4d79675058c9
+		summarizeBy: none
+		sourceColumn: campaign_record_id
+
+	column campaign_id
+		dataType: string
+		lineageTag: a8f49e56-d766-4dc6-b57b-a03ce7aa5ee4
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+	column campaign_name
+		dataType: string
+		lineageTag: 1b5c6c34-45f7-409b-8ff3-31eb26a94f81
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+	column marketing_channel
+		dataType: string
+		lineageTag: 738fb6fd-61e9-47bb-a57a-099d99ea7f92
+		summarizeBy: none
+		sourceColumn: marketing_channel
+
+	column customer_segment
+		dataType: string
+		lineageTag: 512a6ab2-c768-466f-884e-453e0299eb08
+		summarizeBy: none
+		sourceColumn: customer_segment
+
+	column province
+		dataType: string
+		lineageTag: 205023e3-b579-409b-a981-d13a310b61c8
+		summarizeBy: none
+		sourceColumn: province
+
+	column device_type
+		dataType: string
+		lineageTag: 197da740-cb9a-41d7-bec3-ef8d9abdefba
+		summarizeBy: none
+		sourceColumn: device_type
+
+	column product_focus
+		dataType: string
+		lineageTag: 0f335062-000a-4ec5-b374-bceefb697f33
+		summarizeBy: none
+		sourceColumn: product_focus
+
+	column campaign_objective
+		dataType: string
+		lineageTag: 87a5d06b-cef8-410a-af29-3a74263688f2
+		summarizeBy: none
+		sourceColumn: campaign_objective
+
+	column crm_status
+		dataType: string
+		lineageTag: e5088dc0-e455-48d2-b71d-5a1b86dfb5fb
+		summarizeBy: none
+		sourceColumn: crm_status
+
+	column province_code
+		dataType: string
+		lineageTag: 7852eaf0-fce7-46e1-9d8a-370868253c86
+		summarizeBy: none
+		sourceColumn: province_code
+
+	column cost_basis
+		dataType: string
+		lineageTag: 35d264e0-0e17-4b26-b9de-a998e409cf56
+		summarizeBy: none
+		sourceColumn: cost_basis
+
+	column campaign_key
+		dataType: string
+		lineageTag: 713495ca-7262-4373-a753-d9396b83d742
+		summarizeBy: none
+		sourceColumn: campaign_key
+
+	column campaign_family
+		dataType: string
+		lineageTag: 6b56dc72-34b1-474f-b948-71ebb5b45295
+		summarizeBy: none
+		sourceColumn: campaign_family
+
+	column raw_impressions
+		dataType: int64
+		lineageTag: 6ca546cf-700f-4cf5-9af8-d7ac93480f3c
+		summarizeBy: sum
+		sourceColumn: impressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column raw_clicks
+		dataType: int64
+		lineageTag: dfd7ca9d-0e8c-4207-9daa-4fca391f2436
+		summarizeBy: sum
+		sourceColumn: clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column website_sessions
+		dataType: int64
+		lineageTag: 5fe37bf3-f10d-4511-8888-02e110b048fa
+		summarizeBy: sum
+		sourceColumn: website_sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column app_installs
+		dataType: int64
+		lineageTag: a1237d1b-90b7-4834-9f4e-1d6ee65d0707
+		summarizeBy: sum
+		sourceColumn: app_installs
+
+		annotation SummarizationSetBy = Automatic
+
+	column raw_signups
+		dataType: int64
+		lineageTag: fb99b76a-ce9a-44c0-b033-7e0ea1704d33
+		summarizeBy: sum
+		sourceColumn: signups
+
+		annotation SummarizationSetBy = Automatic
+
+	column kyc_started
+		dataType: int64
+		lineageTag: 07eb11fe-8ab4-401a-88ee-013046f3b2ba
+		summarizeBy: sum
+		sourceColumn: kyc_started
+
+		annotation SummarizationSetBy = Automatic
+
+	column kyc_completed
+		dataType: int64
+		lineageTag: 1d87761c-70d0-4130-bb94-ce6ca6c14bfc
+		summarizeBy: sum
+		sourceColumn: kyc_completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column funded_accounts
+		dataType: int64
+		lineageTag: 7f08ee6c-6345-450c-9424-df98d3df20c0
+		summarizeBy: sum
+		sourceColumn: funded_accounts
+
+		annotation SummarizationSetBy = Automatic
+
+	column paying_customers
+		dataType: int64
+		lineageTag: 0d4473f9-c609-4f3f-ac02-417f6fee1fce
+		summarizeBy: sum
+		sourceColumn: paying_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column ad_spend_cad
+		dataType: double
+		lineageTag: 68fd5980-9277-400d-852f-f982eaf5d1e7
+		summarizeBy: sum
+		sourceColumn: ad_spend_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column agency_fee_cad
+		dataType: double
+		lineageTag: b0492893-7846-458f-bd1b-618e2967e1b4
+		summarizeBy: sum
+		sourceColumn: agency_fee_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column incentive_cost_cad
+		dataType: double
+		lineageTag: eaf96378-45fd-4e60-be58-69e4f421a968
+		summarizeBy: sum
+		sourceColumn: incentive_cost_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_marketing_cost_cad
+		dataType: double
+		lineageTag: a2ac6181-3e19-4571-a2a9-bd8ba1416274
+		summarizeBy: sum
+		sourceColumn: total_marketing_cost_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_month_revenue_cad
+		dataType: double
+		lineageTag: a9f28d1b-78c7-401e-b931-24de3643672c
+		summarizeBy: sum
+		sourceColumn: first_month_revenue_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column projected_ltv_cad
+		dataType: double
+		lineageTag: 9eb720b6-d156-4ad5-9402-a881c1f1ea80
+		summarizeBy: sum
+		sourceColumn: projected_ltv_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_first_deposit_cad
+		dataType: double
+		lineageTag: 199148c2-d76c-44c2-b348-a34dc159d7de
+		summarizeBy: sum
+		sourceColumn: avg_first_deposit_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column reported_cost_cad
+		dataType: double
+		lineageTag: 458d2cbd-1d16-4220-a252-d4c53f832ac8
+		summarizeBy: sum
+		sourceColumn: reported_cost_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column component_total_cad
+		dataType: double
+		lineageTag: d5e14521-5634-4d2a-96fd-84be9b14e971
+		summarizeBy: sum
+		sourceColumn: component_total_cad
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_missing_date
+		dataType: boolean
+		isHidden
+		lineageTag: f0f77fd2-64ed-4704-b854-fd44da74a8e2
+		summarizeBy: none
+		sourceColumn: flag_missing_date
+
+	column flag_date_month_conflict
+		dataType: boolean
+		isHidden
+		lineageTag: 0fafbe29-a51e-490b-8cb6-bb995f48e674
+		summarizeBy: none
+		sourceColumn: flag_date_month_conflict
+
+	column date_eligible
+		dataType: boolean
+		isHidden
+		lineageTag: 22a7a2ce-00b0-4080-866a-aabbcf8d0eb8
+		summarizeBy: none
+		sourceColumn: date_eligible
+
+	column flag_cost_mismatch
+		dataType: boolean
+		isHidden
+		lineageTag: 27efc119-c3d3-4060-9876-6f93f44add09
+		summarizeBy: none
+		sourceColumn: flag_cost_mismatch
+
+	column flag_negative_component
+		dataType: boolean
+		isHidden
+		lineageTag: 9773db76-c59a-494f-9d27-20112e1ac084
+		summarizeBy: none
+		sourceColumn: flag_negative_component
+
+	column flag_missing_funnel
+		dataType: boolean
+		isHidden
+		lineageTag: c0b3e357-be9a-4ca4-ac0f-ccc1e3dc3059
+		summarizeBy: none
+		sourceColumn: flag_missing_funnel
+
+	column flag_funnel_order
+		dataType: boolean
+		isHidden
+		lineageTag: 9c4f346c-3291-4564-ad75-1c6321750101
+		summarizeBy: none
+		sourceColumn: flag_funnel_order
+
+	column funnel_eligible
+		dataType: boolean
+		isHidden
+		lineageTag: f26ee884-6104-4978-87dd-42ccf2f798b3
+		summarizeBy: none
+		sourceColumn: funnel_eligible
+
+	column cost_eligible
+		dataType: boolean
+		isHidden
+		lineageTag: ce797586-7d5c-4682-a62f-bbfec7f92e0e
+		summarizeBy: none
+		sourceColumn: cost_eligible
+
+	column analysis_eligible
+		dataType: boolean
+		isHidden
+		lineageTag: 1c86a1b5-c42f-44aa-b4ca-e54b70e4db11
+		summarizeBy: none
+		sourceColumn: analysis_eligible
+
+	column revenue_eligible
+		dataType: boolean
+		isHidden
+		lineageTag: b81fa46d-855b-462d-8991-c8f39cc3dc71
+		summarizeBy: none
+		sourceColumn: revenue_eligible
+
+	column roas_eligible
+		dataType: boolean
+		isHidden
+		lineageTag: 5bc0a9d6-fb80-4caf-9908-9dac2d71791a
+		summarizeBy: none
+		sourceColumn: roas_eligible
+
+	column flag_missing_name
+		dataType: boolean
+		isHidden
+		lineageTag: 3bb4daa1-694f-493d-a49f-e1683263b866
+		summarizeBy: none
+		sourceColumn: flag_missing_name
+
+	column flag_missing_channel
+		dataType: boolean
+		isHidden
+		lineageTag: 6173182e-4a69-4d2b-b662-cd12874fe4ac
+		summarizeBy: none
+		sourceColumn: flag_missing_channel
+
+	column flag_missing_segment
+		dataType: boolean
+		isHidden
+		lineageTag: f4c8ab2d-7af1-49b6-a693-ec6329b8e8ff
+		summarizeBy: none
+		sourceColumn: flag_missing_segment
+
+	column flag_negative_spend
+		dataType: boolean
+		isHidden
+		lineageTag: c4fbd846-922a-4f71-9ec1-2ede10113c64
+		summarizeBy: none
+		sourceColumn: flag_negative_spend
+
+	column flag_missing_revenue
+		dataType: boolean
+		isHidden
+		lineageTag: e0e59642-e1af-4edf-9425-7eb6061de1ba
+		summarizeBy: none
+		sourceColumn: flag_missing_revenue
+
+	column flag_campaign_id_conflict
+		dataType: boolean
+		isHidden
+		lineageTag: 8adf1d72-fae4-4eee-8d08-62ab4700d2f1
+		summarizeBy: none
+		sourceColumn: flag_campaign_id_conflict
+
+	column event_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 8306ba8a-14f0-4e99-9a0b-4c5719044a3c
+		summarizeBy: none
+		sourceColumn: event_date
+
+		variation Variation
+			isDefault
+			relationship: f36d6390-4831-4edf-81e9-d155df164366
+			defaultHierarchy: LocalDateTable_c98a2348-2d40-4a0d-8a37-aef013dabe71.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column trend_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: f6319828-2621-4914-a5c1-fa25d210ba8b
+		summarizeBy: none
+		sourceColumn: trend_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Fact_Campaigns = m
+		mode: import
+		source =
+				let
+				    Source = Raw_Campaigns,
+				    Maps = [#"channel_map" = [#"paid search" = "Paid Search", #"google search" = "Paid Search", #"ppc" = "Paid Search", #"search paid" = "Paid Search", #"paid social" = "Paid Social", #"social paid" = "Paid Social", #"facebook ads" = "Paid Social", #"meta" = "Paid Social", #"linkedin ads" = "LinkedIn Ads", #"linkedin paid" = "LinkedIn Ads", #"linkedin" = "LinkedIn Ads", #"display ads" = "Display", #"banner ads" = "Display", #"display" = "Display", #"programmatic" = "Display", #"organic search" = "Organic Search", #"organic" = "Organic Search", #"seo" = "Organic Search", #"youtube" = "YouTube", #"youtube ads" = "YouTube", #"yt ads" = "YouTube", #"referral" = "Referral", #"refer a friend" = "Referral", #"referal" = "Referral", #"influencer" = "Influencer", #"creator" = "Influencer", #"influencer marketing" = "Influencer", #"email" = "Email", #"e mail" = "Email", #"crm email" = "Email", #"affiliate" = "Affiliate", #"affiliate marketing" = "Affiliate", #"partners" = "Affiliate", #"out of home" = "Out-of-Home", #"ooh" = "Out-of-Home", #"transit ads" = "Out-of-Home"], #"prov_map" = [#"on" = "ON", #"ont" = "ON", #"ontario" = "ON", #"bc" = "BC", #"b.c." = "BC", #"british columbia" = "BC", #"ab" = "AB", #"alberta" = "AB", #"qc" = "QC", #"quebec" = "QC", #"québec" = "QC", #"mb" = "MB", #"manitoba" = "MB", #"sk" = "SK", #"saskatchewan" = "SK", #"ns" = "NS", #"nova scotia" = "NS", #"nb" = "NB", #"new brunswick" = "NB", #"nl" = "NL", #"newfoundland" = "NL", #"pe" = "PE", #"pei" = "PE"], #"prov_full" = [#"ON" = "Ontario", #"BC" = "British Columbia", #"AB" = "Alberta", #"QC" = "Quebec", #"MB" = "Manitoba", #"SK" = "Saskatchewan", #"NS" = "Nova Scotia", #"NB" = "New Brunswick", #"NL" = "Newfoundland & Labrador", #"PE" = "Prince Edward Island"], #"seg_map" = [#"high income professionals" = "High Income Professionals", #"hnw prospects" = "High Income Professionals", #"high income" = "High Income Professionals", #"affluent" = "High Income Professionals", #"crypto curious" = "Crypto Curious", #"newcomers" = "Newcomers", #"newcomer" = "Newcomers", #"new immigrants" = "Newcomers", #"young professionals" = "Young Professionals", #"young professional" = "Young Professionals", #"young pros" = "Young Professionals", #"yp" = "Young Professionals", #"parents" = "Parents", #"families" = "Parents", #"students" = "Students", #"student" = "Students", #"uni students" = "Students", #"small business owners" = "Small Business Owners", #"small business" = "Small Business Owners", #"business owners" = "Small Business Owners", #"smb owners" = "Small Business Owners", #"first time investors" = "First-time Investors", #"new investor" = "First-time Investors", #"beginner investors" = "First-time Investors"], #"device_map" = [#"desktop" = "Desktop", #"android" = "Android", #"ios" = "iOS", #"tablet" = "Tablet", #"mobile web" = "Mobile Web", #"mobile" = "Mobile Web"]],
+				    Norm = (v as any) as text => Text.Combine(List.Select(Text.SplitAny(Text.Lower(Text.Trim(if v = null then "" else Text.From(v))), " _-#(tab)#(cr)#(lf)"), each _ <> ""), " "),
+				    Num = (v as any) as nullable number => let s = if v = null then "" else Text.Trim(Text.Replace(Text.Replace(Text.Replace(Text.Upper(Text.From(v)), "CAD", ""), "$", ""), ",", "")), n = try Number.FromText(s,"en-US") otherwise null in n,
+				    CleanNum = (v as any, integer as logical) as nullable number => let n=Num(v) in if n=null then null else if n<0 or (integer and Number.RoundDown(n)<>n) then null else n,
+				    Map = (v as any, dict as record) as text => Record.FieldOrDefault(dict,Norm(v),"Unknown"),
+				    ParseDate = (v as any) as nullable date => if v=null then null else if Value.Is(v,type date) or Value.Is(v,type datetime) then Date.From(v) else List.First(List.RemoveNulls(List.Transform({"yyyy-MM-dd HH:mm:ss","yyyy-MM-dd","dd/MM/yyyy","dd.MM.yyyy","dd-MM-yyyy"}, (fmt)=>try Date.FromText(Text.From(v),[Format=fmt,Culture="en-GB"]) otherwise null)),null),
+				    CountNames = {"impressions","clicks","website_sessions","app_installs","signups","kyc_started","kyc_completed","funded_accounts","paying_customers"},
+				    MoneyNames = {"ad_spend_cad","agency_fee_cad","incentive_cost_cad","total_marketing_cost_cad","first_month_revenue_cad","projected_ltv_cad","avg_first_deposit_cad"},
+				    Chain = {"impressions","clicks","signups","kyc_started","kyc_completed","funded_accounts","paying_customers"},
+				    Identity = Table.Group(Source,{"campaign_id"},{{"Names", each List.Count(List.Distinct([campaign_name])),Int64.Type}}),
+				    ConflictIds = Table.SelectRows(Identity,each [Names]>1)[campaign_id],
+				    Records = List.Transform(Table.ToRecords(Source),(r)=>let
+				        numeric=Record.FromList(List.Transform(CountNames,each CleanNum(Record.Field(r,_),true)) & List.Transform(MoneyNames,each CleanNum(Record.Field(r,_),false)),CountNames & MoneyNames),
+				        channel=Map(r[marketing_channel],Maps[channel_map]), segment=Map(r[customer_segment],Maps[seg_map]),
+				        provinceCode=Map(r[province],Maps[prov_map]), province=Record.FieldOrDefault(Maps[prov_full],provinceCode,"Unknown"),
+				        day=ParseDate(r[event_date_raw]), id=if r[campaign_id]=null then "Unknown" else Text.Trim(Text.From(r[campaign_id])),
+				        name=if r[campaign_name]=null or Text.Trim(Text.From(r[campaign_name]))="" then "Unknown" else Text.Trim(Text.From(r[campaign_name])),
+				        month=if Text.StartsWith(id,"CMP-") and Text.Length(id)>=11 then Text.Range(id,4,6) else null,
+				        dateConflict=day<>null and month<>null and Date.ToText(day,"yyyyMM")<>month,
+				        components={numeric[ad_spend_cad],numeric[agency_fee_cad],numeric[incentive_cost_cad]},
+				        componentTotal=if List.NonNullCount(components)=3 then Number.Round(List.Sum(components),2) else null,
+				        reported=numeric[total_marketing_cost_cad], total=if reported=null then componentTotal else reported,
+				        mismatch=if reported=null or componentTotal=null then false else Number.Abs(reported-componentTotal)>0.021,
+				        negativeComponent=List.AnyTrue(List.Transform({"ad_spend_cad","agency_fee_cad","incentive_cost_cad"}, each let n=Num(Record.Field(r,_)) in n<>null and n<0)),
+				        seq=List.Transform(Chain,each Record.Field(numeric,_)), missing=List.NonNullCount(seq)<>List.Count(seq),
+				        badOrder=List.AnyTrue(List.Transform({0..5}, each let a=seq{_},b=seq{_+1} in if a=null or b=null then false else b>a)),
+				        funnel=not missing and not badOrder, cost=total<>null and not mismatch and not negativeComponent,
+				        eligible=funnel and cost, dated=day<>null and not dateConflict,
+				        rev=eligible and numeric[first_month_revenue_cad]<>null,
+				        original=Record.SelectFields(r,{"campaign_record_id","campaign_id","campaign_name","marketing_channel","customer_segment","province","device_type","product_focus","campaign_objective","crm_status"}),
+				        clean=Record.Combine({original,numeric,[campaign_id=id,campaign_name=name,marketing_channel=channel,customer_segment=segment,province=province,province_code=provinceCode,device_type=Map(r[device_type],Maps[device_map]),
+				            total_marketing_cost_cad=total,reported_cost_cad=reported,component_total_cad=componentTotal,cost_basis=if reported=null and componentTotal<>null then "complete component sum" else "reported",
+				            event_date=day,trend_date=if dated then day else null,campaign_key=id & " | " & name,campaign_family=channel & " | " & name,
+				            flag_missing_date=day=null,flag_date_month_conflict=dateConflict,date_eligible=dated,flag_cost_mismatch=mismatch,flag_negative_component=negativeComponent,
+				            flag_missing_funnel=missing,flag_funnel_order=badOrder,funnel_eligible=funnel,cost_eligible=cost,analysis_eligible=eligible,revenue_eligible=rev,roas_eligible=rev and numeric[ad_spend_cad]<>null,
+				            flag_missing_name=name="Unknown",flag_missing_channel=channel="Unknown",flag_missing_segment=segment="Unknown",flag_negative_spend=let n=Num(r[ad_spend_cad]) in n<>null and n<0,
+				            flag_missing_revenue=numeric[first_month_revenue_cad]=null,flag_campaign_id_conflict=List.Contains(ConflictIds,r[campaign_id])]})
+				    in clean),
+				    Result = Table.FromRecords(Records),
+				    Typed = Table.TransformColumnTypes(Result,{{"campaign_record_id",type text},{"campaign_id",type text},{"campaign_name",type text},{"marketing_channel",type text},{"customer_segment",type text},{"province",type text},{"device_type",type text},{"product_focus",type text},{"campaign_objective",type text},{"crm_status",type text},{"province_code",type text},{"cost_basis",type text},{"campaign_key",type text},{"campaign_family",type text},{"impressions",Int64.Type},{"clicks",Int64.Type},{"website_sessions",Int64.Type},{"app_installs",Int64.Type},{"signups",Int64.Type},{"kyc_started",Int64.Type},{"kyc_completed",Int64.Type},{"funded_accounts",Int64.Type},{"paying_customers",Int64.Type},{"ad_spend_cad",type number},{"agency_fee_cad",type number},{"incentive_cost_cad",type number},{"total_marketing_cost_cad",type number},{"first_month_revenue_cad",type number},{"projected_ltv_cad",type number},{"avg_first_deposit_cad",type number},{"reported_cost_cad",type number},{"component_total_cad",type number},{"flag_missing_date",type logical},{"flag_date_month_conflict",type logical},{"date_eligible",type logical},{"flag_cost_mismatch",type logical},{"flag_negative_component",type logical},{"flag_missing_funnel",type logical},{"flag_funnel_order",type logical},{"funnel_eligible",type logical},{"cost_eligible",type logical},{"analysis_eligible",type logical},{"revenue_eligible",type logical},{"roas_eligible",type logical},{"flag_missing_name",type logical},{"flag_missing_channel",type logical},{"flag_missing_segment",type logical},{"flag_negative_spend",type logical},{"flag_missing_revenue",type logical},{"flag_campaign_id_conflict",type logical},{"event_date",type date},{"trend_date",type date}},"en-CA")
+				in Typed
+
+	annotation PBI_ResultType = Table
+
