@@ -1,6 +1,6 @@
 # Validation record — 28 October 2026
 
-> Historical source-validation record. For the later Desktop screenshot evidence, incomplete file submission and outstanding checks, see [Desktop handoff — 6 November 2026](Desktop_Handoff_2026-11-06.md). The screenshots demonstrate populated pages; they do not certify the complete latest editable package or interactions.
+> Historical source-validation record. The [submitted PBIX](../../powerbi/Wealthsimple_Marketing_Analytics.pbix) passed archive integrity checks on 7 November 2026. It contains seven visible report pages and an embedded model. Desktop refresh and interaction testing remain open. See the [handoff](Desktop_Handoff_2026-11-06.md).
 
 - Python pipeline: all nine integrity and reconciliation tests pass.
 - Recommendation report: two rendered pages visually inspected; layout and tables checked.

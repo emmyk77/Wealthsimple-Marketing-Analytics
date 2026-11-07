@@ -1,6 +1,6 @@
 # Brief compliance and final submission checklist
 
-> Status update, 6 November 2026: [seven actual Desktop screenshots](Dashboard_Gallery.md) now demonstrate populated pages and visible headline reconciliation. The latest report/model folders and final PBIX remain missing. See [current handoff](review/Desktop_Handoff_2026-11-06.md) for observed defects and the exact files required; the visual acceptance criteria below still need checking.
+> Updated 7 November 2026. The [downloadable PBIX](../powerbi/Wealthsimple_Marketing_Analytics.pbix) contains seven pages and an embedded model. The [screenshot gallery](Dashboard_Gallery.md) shows the populated pages. The Desktop-saved PBIP source ZIP, refresh and interaction checks remain pending. See the [handoff](review/Desktop_Handoff_2026-11-06.md).
 
 Basis: supplied “FinTech Marketing Spend Efficiency, Customer Acquisition Cost, and Paid Customer Conversion Analysis in Wealthsimple Canada” project brief. This is a fictional training exercise. The original brief's June 2026 dates are historical; this revision is dated 28 October 2026 and makes no on-time submission claim.
 
@@ -14,7 +14,7 @@ Basis: supplied “FinTech Marketing Spend Efficiency, Customer Acquisition Cost
 | Power Query cleaning | `powerbi/powerquery/` and model partitions; Desktop captures | Loaded results visible in screenshots; independent repeat refresh pending |
 | DAX measures and data model | `powerbi/DAX_Measures.md`, model.bim; Desktop captures | Selected displayed totals match; full latest-model reconciliation pending |
 | Seven interactive dashboard pages | Authored PBIR baseline and `docs/screenshots/` | Rendering demonstrated; latest edited source and interaction verification pending |
-| Final `.pbix` | Not supplied | Requires Desktop refresh, checks and Save As |
+| Final `.pbix` | [Submitted report](../powerbi/Wealthsimple_Marketing_Analytics.pbix) | Archive and page inventory verified. Desktop refresh and interaction checks pending. |
 
 ## Seven-page coverage
 

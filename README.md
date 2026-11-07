@@ -8,9 +8,9 @@ Seven report pages have been opened and populated in Power BI Desktop, as shown 
 
 ![Marketing Spend and CAC dashboard](docs/screenshots/02_spend_and_cac.png)
 
-**[View all seven dashboard pages](docs/Dashboard_Gallery.md)** · **[Current status and remaining steps](docs/review/Desktop_Handoff_2026-11-06.md)**
+**[Download the Power BI report](powerbi/Wealthsimple_Marketing_Analytics.pbix)** · **[View all seven dashboard pages](docs/Dashboard_Gallery.md)** · **[Current status and remaining steps](docs/review/Desktop_Handoff_2026-11-06.md)**
 
-**Release status:** dashboard screenshots are available; the final editable Desktop package is still pending. The uploaded `Wealthsimple back up.pbip` is a 192-byte launcher referencing a report folder that was not included. The existing `powerbi/` folder is the earlier authored source baseline, with the report-version correction applied; it does not yet contain the latest manual formatting shown in the screenshots. No final PBIX or Power BI Service deployment is claimed.
+The PBIX uploaded on 7 November 2026 contains the seven formatted report pages and an embedded data model. Download the file and open it in Power BI Desktop. To refresh the Excel data on another computer, point the DataRoot parameter to the local repository folder containing `data/raw/`. The separate PBIP project folders in `powerbi/` are the earlier source layout. The Desktop-saved source ZIP and independent refresh checks are pending.
 
 ## Analysis
 

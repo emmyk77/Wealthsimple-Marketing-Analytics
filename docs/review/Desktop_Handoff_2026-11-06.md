@@ -1,5 +1,7 @@
 # Desktop handoff — 6 November 2026
 
+**Update, 7 November 2026.** The author supplied the [complete PBIX](../../powerbi/Wealthsimple_Marketing_Analytics.pbix). The archive integrity check passed. All seven expected pages are visible in the report definition and the embedded data model is present. SHA-256: `860dff3c9d6863ccb3e15b19667959928ed90e9bc4fc4ffbe88d5f6b1de4c1f1`. Step 2 below is complete for file delivery. The remaining work includes supplying the Desktop-saved project folders and testing refresh, measures and slicers in Desktop. The record below describes the original 6 November submission.
+
 ## Current delivery status
 
 Seven actual Power BI Desktop screenshots are now available in the [dashboard gallery](../Dashboard_Gallery.md). All seven pages display populated visuals. The author has applied a consistent grey, white and red layout and reduced the visible slicers.
