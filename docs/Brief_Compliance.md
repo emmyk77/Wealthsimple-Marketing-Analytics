@@ -1,6 +1,6 @@
 # Brief compliance and final submission checklist
 
-> Updated 7 November 2026. The [downloadable PBIX](../powerbi/Wealthsimple_Marketing_Analytics.pbix) contains seven pages and an embedded model. The [screenshot gallery](Dashboard_Gallery.md) shows the populated pages. The [Desktop-saved project](../powerbi/desktop/) is available. Its report definitions match the submitted PBIX. Refresh and interaction checks remain pending. See the [handoff](review/Desktop_Handoff_2026-11-06.md).
+> The [current editable project](../powerbi/desktop/) includes the revised Budget card. The [7 November PBIX](../powerbi/Wealthsimple_Marketing_Analytics.pbix) and [screenshots](Dashboard_Gallery.md) predate this revision. The [benchmark checks](Budget_Benchmark_Checks.md) give independently verified expected values and the remaining Desktop checks.
 
 Basis: supplied “FinTech Marketing Spend Efficiency, Customer Acquisition Cost, and Paid Customer Conversion Analysis in Wealthsimple Canada” project brief. This is a fictional training exercise. The original brief's June 2026 dates are historical; this revision is dated 28 October 2026 and makes no on-time submission claim.
 

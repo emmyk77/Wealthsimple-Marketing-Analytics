@@ -1,0 +1,74 @@
+EVALUATE
+UNION (
+    ROW (
+        "Selection", "All records",
+        "Source rows", [Source Records],
+        "Eligible", [Eligible Records],
+        "Spend", [Total Spend],
+        "Signups", [Signups],
+        "Funded", [Funded Accounts],
+        "Paying", [Paying Customers],
+        "Benchmark CAC", [Selected Channel Benchmark CAC],
+        "Channels above", [Above Benchmark Channel Count]
+    ),
+    SUMMARIZECOLUMNS (
+        TREATAS ( { "Paid Search" }, Fact_Campaigns[marketing_channel] ),
+        "Selection", "Paid Search",
+        "Source rows", [Source Records],
+        "Eligible", [Eligible Records],
+        "Spend", [Total Spend],
+        "Signups", [Signups],
+        "Funded", [Funded Accounts],
+        "Paying", [Paying Customers],
+        "Benchmark CAC", [Selected Channel Benchmark CAC],
+        "Channels above", [Above Benchmark Channel Count]
+    ),
+    SUMMARIZECOLUMNS (
+        TREATAS ( { "Paid Search", "Email" }, Fact_Campaigns[marketing_channel] ),
+        "Selection", "Paid Search + Email",
+        "Source rows", [Source Records],
+        "Eligible", [Eligible Records],
+        "Spend", [Total Spend],
+        "Signups", [Signups],
+        "Funded", [Funded Accounts],
+        "Paying", [Paying Customers],
+        "Benchmark CAC", [Selected Channel Benchmark CAC],
+        "Channels above", [Above Benchmark Channel Count]
+    ),
+    SUMMARIZECOLUMNS (
+        TREATAS ( { "Paid Social" }, Fact_Campaigns[marketing_channel] ),
+        "Selection", "Paid Social",
+        "Source rows", [Source Records],
+        "Eligible", [Eligible Records],
+        "Spend", [Total Spend],
+        "Signups", [Signups],
+        "Funded", [Funded Accounts],
+        "Paying", [Paying Customers],
+        "Benchmark CAC", [Selected Channel Benchmark CAC],
+        "Channels above", [Above Benchmark Channel Count]
+    ),
+    SUMMARIZECOLUMNS (
+        TREATAS ( { "Paid Search | Trade Account Search" }, Fact_Campaigns[campaign_family] ),
+        "Selection", "Trade Account Search family, Paid Search",
+        "Source rows", [Source Records],
+        "Eligible", [Eligible Records],
+        "Spend", [Total Spend],
+        "Signups", [Signups],
+        "Funded", [Funded Accounts],
+        "Paying", [Paying Customers],
+        "Benchmark CAC", [Selected Channel Benchmark CAC],
+        "Channels above", [Above Benchmark Channel Count]
+    ),
+    SUMMARIZECOLUMNS (
+        TREATAS ( { "2025-01" }, Dim_Date[YearMonth] ),
+        "Selection", "January 2025",
+        "Source rows", [Source Records],
+        "Eligible", [Eligible Records],
+        "Spend", [Total Spend],
+        "Signups", [Signups],
+        "Funded", [Funded Accounts],
+        "Paying", [Paying Customers],
+        "Benchmark CAC", [Selected Channel Benchmark CAC],
+        "Channels above", [Above Benchmark Channel Count]
+    )
+)

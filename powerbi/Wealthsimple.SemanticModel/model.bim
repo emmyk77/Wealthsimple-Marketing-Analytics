@@ -684,7 +684,7 @@
           },
           {
             "name": "Above Benchmark Channel Count",
-            "expression": "VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))",
+            "expression": "VAR Benchmark = [Selected Channel Benchmark CAC] VAR AboveBenchmark = FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]), NOT ISBLANK([CAC]) && [CAC] > Benchmark) RETURN IF(ISBLANK(Benchmark), BLANK(), COALESCE(COUNTROWS(AboveBenchmark), 0))",
             "formatString": "#,0",
             "displayFolder": "Efficiency"
           },

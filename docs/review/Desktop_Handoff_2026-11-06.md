@@ -1,5 +1,7 @@
 # Desktop handoff — 6 November 2026
 
+**8 November follow-up.** The [budget validation record](../Budget_Benchmark_Checks.md) supersedes step 3 for the editable project and documents what remains for a new Desktop export. The archived 7 November PBIX retains its original hash.
+
 **Update, 7 November 2026.** The author supplied the [complete PBIX](../../powerbi/Wealthsimple_Marketing_Analytics.pbix). The archive integrity check passed. All seven expected pages are visible in the report definition and the embedded data model is present. SHA-256: `860dff3c9d6863ccb3e15b19667959928ed90e9bc4fc4ffbe88d5f6b1de4c1f1`. The [Desktop-saved PBIP project](../../powerbi/desktop/) has also been supplied. Steps 1 and 2 below are complete for file delivery, and the matching source is published. All 96 report and resource JSON files match the PBIX in content. The project includes seven pages, 84 visual containers and 55 measures. The published copy uses a portable DataRoot placeholder and omits local caches and settings. Desktop refresh, slicer behavior, measure reconciliation and the budget benchmark card still require review. The record below describes the original 6 November submission.
 
 ## Current delivery status

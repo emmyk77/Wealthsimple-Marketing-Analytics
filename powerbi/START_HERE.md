@@ -1,6 +1,6 @@
 # Open and validate the Power BI project
 
-[Download the Power BI report](Wealthsimple_Marketing_Analytics.pbix) to view the seven formatted dashboards with their embedded data. To edit the source, download and extract the whole repository, then open [desktop/Wealthsimple.pbip](desktop/Wealthsimple.pbip) on Windows. Keep its sibling report and semantic model folders together.
+Download and extract the [whole repository](https://github.com/emmyk77/Wealthsimple-Marketing-Analytics/archive/refs/heads/main.zip), then open [desktop/Wealthsimple.pbip](desktop/Wealthsimple.pbip) in Power BI Desktop on Windows. This project includes the corrected Budget card. The [7 November PBIX](Wealthsimple_Marketing_Analytics.pbix) is the earlier Desktop export. [Expected budget counts and verification steps](../docs/Budget_Benchmark_Checks.md).
 
 In Power BI Desktop, go to **Transform data → Manage parameters → DataRoot**. Enter the local repository folder containing `data/raw/Power_BI_project.xlsx`, then select **Close & Apply → Refresh**. With all filters cleared, check for 2,000 source records, 1,671 eligible and 329 excluded. Select one channel to check the visuals respond, then clear it.
 

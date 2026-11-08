@@ -265,7 +265,7 @@ table Fact_Campaigns
 		displayFolder: Efficiency
 		lineageTag: 76727f07-9488-441c-9b5c-cd755be434f6
 
-	measure 'Above Benchmark Channel Count' = VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))
+	measure 'Above Benchmark Channel Count' = VAR Benchmark = [Selected Channel Benchmark CAC] VAR AboveBenchmark = FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]), NOT ISBLANK([CAC]) && [CAC] > Benchmark) RETURN IF(ISBLANK(Benchmark), BLANK(), COALESCE(COUNTROWS(AboveBenchmark), 0))
 		formatString: #,0
 		displayFolder: Efficiency
 		lineageTag: 5ffea17f-5ec5-4b7d-bb71-81b850ad6b16

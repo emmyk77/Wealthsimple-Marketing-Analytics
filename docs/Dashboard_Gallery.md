@@ -2,7 +2,7 @@
 
 These are the author's actual Power BI Desktop screenshots submitted on 6 November 2026, preserved without retouching. They show the current local report, including outstanding issues. They are not generated design examples and are not an interactive report.
 
-[Download the Power BI report](../powerbi/Wealthsimple_Marketing_Analytics.pbix) to explore these seven pages in Desktop. The [editable project](../powerbi/desktop/) contains the matching report layout. See the [handoff](review/Desktop_Handoff_2026-11-06.md) for remaining checks.
+The seven images show the 7 November Desktop export. The [current editable project](../powerbi/desktop/) includes the revised benchmark calculation. [Open the corrected project](../powerbi/START_HERE.md).
 
 ## 1. Data Quality
 ![Marketing Data Quality](screenshots/01_data_quality.png)
@@ -30,7 +30,7 @@ Province, segment, device and product comparisons render. Suggested title: “Cu
 
 ## 7. Budget Optimization
 ![Budget Review and Priorities](screenshots/07_budget_optimization.png)
-The first three cards display CAD 337.08K, 19 families and 79.0% share. **Above Benchmark Channel Count remains blank.** Diagnose this measure, or replace only its visual binding with the existing Selected Channel Benchmark CAC measure and retitle the card “Benchmark CAC”. The lower table currently shows CAD 4,025.61 for that benchmark. Do not substitute zero for the unresolved count. Zero-output spend is a review signal, not proven waste.
+The archived capture shows CAD 337.08K, 19 families and 79.0% share in the first three cards. The fourth card appeared blank because no channel with a defined CAC exceeded the pooled CAD 4,025.61 benchmark. The revised measure returns 0 for this comparison and stays blank if the selected data has no paying customers. [Filter checks and expected values](Budget_Benchmark_Checks.md).
 
 ## Screenshot provenance
 - [Source names, byte sizes and SHA-256 hashes](screenshots/manifest.json)

@@ -8,9 +8,9 @@ Seven report pages have been opened and populated in Power BI Desktop, as shown 
 
 ![Marketing Spend and CAC dashboard](docs/screenshots/02_spend_and_cac.png)
 
-**[Download the Power BI report](powerbi/Wealthsimple_Marketing_Analytics.pbix)** · **[View all seven dashboard pages](docs/Dashboard_Gallery.md)** · **[Current status and remaining steps](docs/review/Desktop_Handoff_2026-11-06.md)**
+**[Download the corrected Power BI project](https://github.com/emmyk77/Wealthsimple-Marketing-Analytics/archive/refs/heads/main.zip)** · **[View all seven dashboard pages](docs/Dashboard_Gallery.md)** · **[Check the benchmark and filter results](docs/Budget_Benchmark_Checks.md)**
 
-The PBIX uploaded on 7 November 2026 contains the seven formatted report pages and an embedded data model. Download the file and open it in Power BI Desktop. To refresh the Excel data on another computer, point the DataRoot parameter to the local repository folder containing `data/raw/`. The [editable Desktop project](powerbi/desktop/) contains the matching report layout and semantic model. Open `powerbi/desktop/Wealthsimple.pbip` from an extracted repository. The original generated baseline is retained separately for reproducibility.
+Extract the repository ZIP and open `powerbi/desktop/Wealthsimple.pbip` on Windows. Set DataRoot to the extracted repository folder and refresh. The revised project distinguishes a valid count of zero from an undefined benchmark. The [7 November Desktop export](powerbi/Wealthsimple_Marketing_Analytics.pbix) and original screenshots predate this model correction.
 
 ## Analysis
 
@@ -65,7 +65,7 @@ python -m unittest discover -s tests -v
 - [Brief compliance and submission checklist](docs/Brief_Compliance.md)
 - [Analysis methodology](docs/Analysis_Methodology.md)
 
-The report and executive deck were completed in the earlier review. The Power BI source contains seven pages, native visual definitions, an import model and Power Query transformations. **The author's screenshots now establish that all seven pages render with populated data in Desktop.** Visible headline totals agree with the baseline for source/eligible/excluded records, spend, paying customers and CAC. This is screenshot evidence, not an independent execution of the latest model: independent refresh, full DAX reconciliation, interaction testing and final visual corrections are still pending. The Budget page still displays a blank benchmark-count card. Follow the [handoff checklist](docs/review/Desktop_Handoff_2026-11-06.md) before submission.
+The author's screenshots show all seven pages populated in the earlier Desktop export. The corrected project's budget measure has been checked against the campaign records for unfiltered, single-channel, multi-channel, family and month selections. The next Desktop check is to refresh that project, run the supplied DAX query, test the slicers and save and reopen a new PBIX. [Expected values and Desktop steps](docs/Budget_Benchmark_Checks.md).
 
 The Power BI source reads the unchanged Excel workbook through Power Query; the processed Python outputs provide the independent validation baseline. No Power BI Service deployment or public interactive dashboard is claimed.
 

@@ -103,7 +103,7 @@ measure('Review Status','SWITCH(TRUE(),[Eligible Records]=0,"No eligible records
 measure('Funnel Value','SWITCH(SELECTEDVALUE(Funnel_Stages[Stage]),"Impressions",[Impressions],"Clicks",[Clicks],"Signups",[Signups],"KYC started",[KYC Started],"KYC completed",[KYC Completed],"Funded accounts",[Funded Accounts],"Paying customers",[Paying Customers])','#,0','Funnel')
 measure('Quality Issue Records','SWITCH(SELECTEDVALUE(Quality_Issues[Issue]),"Missing dates",[Missing Dates],"Date conflicts",[Date Conflicts],"Incomplete funnels",[Incomplete Funnels],"Funnel violations",[Funnel Violations],"Missing names",[Missing Names],"Missing channels",[Missing Channels],"Missing segments",[Missing Segments],"Negative spend",[Negative Spend Records],"Missing revenue",[Missing Revenue])','#,0','Data Quality')
 measure('Selected Channel Benchmark CAC','CALCULATE([CAC],ALLSELECTED(Fact_Campaigns[marketing_channel]))','"CAD "#,0.00','Efficiency')
-measure('Above Benchmark Channel Count','VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))','#,0','Efficiency')
+measure('Above Benchmark Channel Count','VAR Benchmark = [Selected Channel Benchmark CAC] VAR AboveBenchmark = FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]), NOT ISBLANK([CAC]) && [CAC] > Benchmark) RETURN IF(ISBLANK(Benchmark), BLANK(), COALESCE(COUNTROWS(AboveBenchmark), 0))','#,0','Efficiency')
 measure('Observed Efficiency Ratio','DIVIDE([Selected Channel Benchmark CAC],[CAC])','0.00"x"','Efficiency')
 # Tabular column and measure names share a case-insensitive namespace.
 raw_column_names = {'impressions':'raw_impressions','clicks':'raw_clicks','signups':'raw_signups'}

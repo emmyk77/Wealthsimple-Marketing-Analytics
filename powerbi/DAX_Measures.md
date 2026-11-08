@@ -323,7 +323,7 @@ Selected Channel Benchmark CAC = CALCULATE([CAC],ALLSELECTED(Fact_Campaigns[mark
 ## Above Benchmark Channel Count
 
 ```dax
-Above Benchmark Channel Count = VAR Benchmark=[Selected Channel Benchmark CAC] RETURN COUNTROWS(FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]),NOT ISBLANK([CAC]) && [CAC]>Benchmark))
+Above Benchmark Channel Count = VAR Benchmark = [Selected Channel Benchmark CAC] VAR AboveBenchmark = FILTER(ALLSELECTED(Fact_Campaigns[marketing_channel]), NOT ISBLANK([CAC]) && [CAC] > Benchmark) RETURN IF(ISBLANK(Benchmark), BLANK(), COALESCE(COUNTROWS(AboveBenchmark), 0))
 ```
 
 ## Observed Efficiency Ratio
